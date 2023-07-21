@@ -283,11 +283,32 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "../../View/Admin/Order/Detail.php";
             break;
+
         case 'get_update_order':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $Order = GetOneOrder($_GET['id']);
             }
             include "../../View/Admin/Order/Update.php";
+            break;
+
+        case 'update_order':
+            if (isset($_POST['btn_update_order']) && ($_POST['btn_update_order'])) {
+                $ho_va_ten = $_POST['ho_va_ten'];
+                $email = $_POST['email'];
+                $dia_chi = $_POST['dia_chi'];
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $trang_thai = $_POST['trang_thai'];
+                $don_hang_id = $_POST['don_hang_id'];
+
+                UpdateOrder($don_hang_id, $ho_va_ten, $email, $dia_chi, $so_dien_thoai, $trang_thai);
+                $msg = "Cập nhật thành công";
+            }
+            $keyWord = '';
+            $trang_thai = 0;
+            $ngay_bat_dau = '';
+            $ngay_ket_thuc = '';
+            $ListOrder = GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc);
+            include "../../View/Admin/Order/List.php";
             break;
         default:
             // include "Layout/content.php";

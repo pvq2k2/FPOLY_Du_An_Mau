@@ -36,7 +36,9 @@ if (is_array($Order)) {
             <option value="4" <?php echo $trang_thai == 4 ? 'selected' : '' ?>>Thành công</option>
         </select>
     </div>
-
+    <?php
+    if (isset($msg) && ($msg != "")) echo $msg;
+    ?>
     <div class="form-group">
         <input type="hidden" name="don_hang_id" value="<?= $don_hang_id ?>">
         <input type="submit" value="Cập nhật" name="btn_update_order">
