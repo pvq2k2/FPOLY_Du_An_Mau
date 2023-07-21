@@ -14,3 +14,15 @@ function GetAllProductsWhereOrderExist($don_hang_id)
     GROUP BY SP.san_pham_id, SP.ten_san_pham, SP.hinh, SP.gia";
     return pdo_query($sql);
 }
+
+function GetAllProductByOrderID($don_hang_id)
+{
+    $sql = "SELECT * FROM chi_tiet_don_hang WHERE don_hang_id = " . $don_hang_id;
+    return pdo_query($sql);
+}
+
+function RemoveOrderDetail($chi_tiet_don_hang_id)
+{
+    $sql = "DELETE FROM chi_tiet_don_hang WHERE chi_tiet_don_hang_id=" . $chi_tiet_don_hang_id;
+    pdo_query($sql);
+}

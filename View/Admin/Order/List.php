@@ -41,7 +41,7 @@
                 <td>
                     <a href="' . $URLOrderDetail . '"><input type="button" value="Chi tiết"></a>
                     <a href="' . $URLGetUpdateOrder . '"><input type="button" value="Sửa"></a>
-                    <a href="' . $URLRemoveOrder . '"><input type="button" value="Xóa"></a>
+                    <button onclick="deleteOrder()">Xóa</button>
                 </td>
             </tr>';
         }
@@ -49,3 +49,42 @@
 
     </table>
 </div>
+
+<script>
+    function deleteOrder() {
+        new swal({
+            title: 'Bạn có chắc chắn muốn xoá?',
+            text: 'Hành động này sẽ không thể hoàn tác!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Xoá',
+            cancelButtonText: 'Hủy'
+        }).then((willDelete) => {
+            if (willDelete.value) {
+                $.ajax({
+                    url: '<?php echo $URLRemoveOrder; ?>', // Đường dẫn tới file xử lý xóa bình luận trên máy chủ
+                    type: 'GET',
+                    success: function(response) {
+                        console.log(response);
+                        if (response.includes("success")) {
+                            toastr.success('Xóa đơn hàng thành công!');
+                            // Tải lại trang hoặc làm cập nhật danh sách bình luận
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1000);
+
+                        } else {
+                            toastr.error('Xóa đơn hàng thất bại!');
+                        }
+                    },
+                    error: function() {
+                        toastr.error('Lỗi kết nối!');
+                    },
+                });
+
+            } else {
+                toastr.error('Xóa đơn hàng thất bại!');
+            }
+        });
+    }
+</script>

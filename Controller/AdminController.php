@@ -310,6 +310,23 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             $ListOrder = GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc);
             include "../../View/Admin/Order/List.php";
             break;
+
+        case 'remove_order':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $ListOrderDetail = GetAllProductByOrderID($_GET['id']);
+                if (is_array($ListOrderDetail) && count($ListOrderDetail) > 0) {
+                    foreach ($ListOrderDetail as $OrderDetail) {
+                        RemoveOrderDetail($OrderDetail['chi_tiet_don_hang_id']);
+                    }
+                }
+                RemoveOrder($_GET['id'], $ListOrderDetail);
+                echo 'success';
+                exit();
+            } else {
+                echo 'error';
+                exit();
+            }
+            break;
         default:
             // include "Layout/content.php";
             break;
