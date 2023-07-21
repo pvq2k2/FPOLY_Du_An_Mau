@@ -5,6 +5,7 @@ include "../../Models/Product.php";
 include "../../Models/User.php";
 include "../../Models/Comment.php";
 include "../../Models/Order.php";
+include "../../Models/OrderDetail.php";
 include "../../Helper/UploadHelper.php";
 include "../../Helper/FormatHelper.php";
 
@@ -273,6 +274,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             $ListOrder = GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc);
             include "../../View/Admin/Order/List.php";
+            break;
+
+        case 'order_detail':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $Order = GetOneOrder($_GET['id']);
+                $ListOrderDetail = GetAllProductsWhereOrderExist($_GET['id']);
+            }
+            include "../../View/Admin/Order/Detail.php";
             break;
         default:
             // include "Layout/content.php";

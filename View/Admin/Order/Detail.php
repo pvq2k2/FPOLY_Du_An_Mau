@@ -1,4 +1,4 @@
-<a href="index.php?act=my_order">Quay lại</a>
+<a href="index.php?act=list_order">Quay lại</a>
 <div class="info_order">
     <h2>Thông tin đơn hàng</h2>
     <span>Đơn hàng ID: <?= $Order['don_hang_id'] ?></span>
@@ -19,7 +19,7 @@
         <?php
         foreach ($ListOrderDetail as $Product) {
             extract($Product);
-            $hinh = $IMG_PATH . "Product/" . $hinh;
+            $hinh = "../../Upload/Product/" . $hinh;
             echo '<tr>
                 <td>' . $ten_san_pham . '</td>
                 <td><img src="' . $hinh . '" width="100"></td>
