@@ -183,13 +183,25 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'check_out':
             if (isset($_POST['btn_check_out']) && ($_POST['btn_check_out'])) {
                 $tai_khoan_id = $_POST['tai_khoan_id'];
+                $ho_va_ten = $_POST['ho_va_ten'];
+                $dia_chi = $_POST['dia_chi'];
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $email = $_POST['email'];
                 $ngay_dat = date("Y-m-d H:i:s");
                 $tong_tien = $_POST['tong_tien'];
                 $phuong_thuc_thanh_toan = $_POST['phuong_thuc_thanh_toan'];
                 $trang_thai = 0;
-                $don_hang_id = CreateOrder($tai_khoan_id, $ngay_dat, $tong_tien, $phuong_thuc_thanh_toan, $trang_thai);
-
-                var_dump($tong_tien);
+                $don_hang_id = CreateOrder(
+                    $tai_khoan_id,
+                    $ho_va_ten,
+                    $dia_chi,
+                    $so_dien_thoai,
+                    $email,
+                    $ngay_dat,
+                    $tong_tien,
+                    $phuong_thuc_thanh_toan,
+                    $trang_thai
+                );
 
                 if (isset($_SESSION['user'])) {
                     $ListProductInCart = GetAllProductsWhereCartExist($_SESSION['user']['tai_khoan_id']);

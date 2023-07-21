@@ -46,9 +46,13 @@ CREATE TABLE binh_luan (
 CREATE TABLE don_hang (
   don_hang_id INT PRIMARY KEY AUTO_INCREMENT,
   tai_khoan_id INT NOT NULL,
+  ho_va_ten VARCHAR(50) NOT NULL,
+  dia_chi VARCHAR(255),
+  so_dien_thoai VARCHAR(20),
+  email VARCHAR(255) NOT NULL,
   ngay_dat DATE,
   tong_tien INT NOT NULL,
-  phuong_thuc_thanh_toan VARCHAR(100) NOT NULL,
+  phuong_thuc_thanh_toan TINYINT(1) DEFAULT 0 NOT NULL,
   trang_thai TINYINT(1) DEFAULT 0 NOT NULL,
   FOREIGN KEY (tai_khoan_id) REFERENCES tai_khoan(tai_khoan_id)
 );

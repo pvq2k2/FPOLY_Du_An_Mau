@@ -38,11 +38,11 @@
 
     <div class="form-box">
         <div class="form-group">
-            <input type="radio" value="Thanh toán khi nhận hàng" name="phuong_thuc_thanh_toan" checked>
+            <input type="radio" value="0" name="phuong_thuc_thanh_toan" checked>
             <label for="">Thanh toán khi nhận hàng</label>
         </div>
         <div class="form-group">
-            <input type="radio" value="Thanh toán qua ngân hàng" name="phuong_thuc_thanh_toan">
+            <input type="radio" value="1" name="phuong_thuc_thanh_toan">
             <label for="">Thanh toán qua ngân hàng</label>
         </div>
     </div>
