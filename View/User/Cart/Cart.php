@@ -14,13 +14,12 @@ if (isset($_SESSION['user'])) {
         $total_amount = 0;
         foreach ($ListProductInCart as $Cart) {
             extract($Cart);
-            $formatted_amount = number_format($gia, 0, ',', '.');
             $total_amount += $gia * $so_luong;
             $hinh = $IMG_PATH . "Product/" . $hinh;
             echo '<tr>
             <td>' . $ten_san_pham . '</td>
             <td><img src="' . $hinh . '" width="100"></td>
-            <td>' . $formatted_amount . 'đ</td>
+            <td>' . FormatPrice($gia) . 'đ</td>
             <td>
                 <form id="submitForm" action="index.php?act=cart" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="gio_hang_id" value="' . $gio_hang_id . '">
@@ -35,9 +34,8 @@ if (isset($_SESSION['user'])) {
             </td>
         </tr>';
         }
-        $formatted_total_amount = number_format($total_amount, 0, ',', '.');
         echo '</table>
-    <h2>Tổng tiền: ' . $formatted_total_amount . 'đ</h2>
+    <h2>Tổng tiền: ' . FormatPrice($total_amount) . 'đ</h2>
     <a href="index.php?act=bill">Mua hàng</a>
     ';
     } else {

@@ -18,8 +18,8 @@ if (!isset($ListOrderDetail) && (!is_array($ListOrderDetail))) {
     <h2>Thông tin đơn hàng</h2>
     <span>Đơn hàng ID: <?= $don_hang_id ?></span>
     <span>Ngày đặt: <?= $ngay_dat ?></span>
-    <span>Tổng tiền: <?= $tong_tien ?></span>
-    <span>Phương thức thanh toán: <?= $phuong_thuc_thanh_toan ?></span>
+    <span>Tổng tiền: <?= FormatPrice($tong_tien) ?></span>
+    <span>Phương thức thanh toán: <?= FormatPaymentMethods($phuong_thuc_thanh_toan) ?></span>
 </div>
 <div class="info_user">
     <h2>Thông tin người đặt</h2>
@@ -40,12 +40,11 @@ if (!isset($ListOrderDetail) && (!is_array($ListOrderDetail))) {
         <?php
         foreach ($ListOrderDetail as $Product) {
             extract($Product);
-            $formatted_amount = number_format($gia, 0, ',', '.');
             $hinh = $IMG_PATH . "Product/" . $hinh;
             echo '<tr>
                 <td>' . $ten_san_pham . '</td>
                 <td><img src="' . $hinh . '" width="100"></td>
-                <td>' . $formatted_amount . 'đ</td>
+                <td>' . FormatPrice($gia) . 'đ</td>
                 <td>' . $so_luong . '</td>
             </tr>';
         }

@@ -7,7 +7,7 @@
             <img src="' . $hinh . '" width="200">
             <form action="index.php?act=add_to_cart" method="post" id="addToCartForm">
             <p>' . $ten_san_pham . '</p>
-            <span>' . $gia . '</span>
+            <span>' . FormatPrice($gia) . '</span>
             <div class="form_group">
                 <label for="">Số lượng</label>
                 <button class="btn" name="increaseBtn" id="increaseBtn">+</button>
@@ -47,7 +47,7 @@
         echo ' <div>
             <img src="' . $hinh . '" width="200">
             <p>' . $ten_san_pham . '</p>
-            <span>' . $gia . '</span>
+            <span>' . FormatPrice($gia) . '</span>
             </div>';
         echo $mo_ta;
 

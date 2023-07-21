@@ -6,6 +6,7 @@ include "Models/User.php";
 include "Models/Cart.php";
 include "Models/Order.php";
 include "Models/OrderDetail.php";
+include "Helper/FormatHelper.php";
 include "Global.php";
 $ListNewProduct = GetLimitProduct();
 $ListCategory = GetAllCategory();

@@ -13,7 +13,7 @@
             echo ' <div>
             <img src="' . $hinh . '" width="200">
             <p>' . $ten_san_pham . '</p>
-            <span>' . $gia . '</span>
+            <span>' . FormatPrice($gia) . '</span>
             </div>';
         }
         ?>

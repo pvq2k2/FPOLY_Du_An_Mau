@@ -3,8 +3,8 @@
     <h2>Thông tin đơn hàng</h2>
     <span>Đơn hàng ID: <?= $Order['don_hang_id'] ?></span>
     <span>Ngày đặt: <?= $Order['ngay_dat'] ?></span>
-    <span>Tổng tiền: <?= $Order['tong_tien'] ?></span>
-    <span>Phương thức thanh toán: <?= $Order['phuong_thuc_thanh_toan'] ?></span>
+    <span>Tổng tiền: <?= FormatPrice($Order['tong_tien']) ?></span>
+    <span>Phương thức thanh toán: <?= FormatPaymentMethods($Order['phuong_thuc_thanh_toan']) ?></span>
 </div>
 
 <div class="info_cart">
@@ -20,12 +20,11 @@
         <?php
         foreach ($ListOrderDetail as $Product) {
             extract($Product);
-            $formatted_amount = number_format($gia, 0, ',', '.');
             $hinh = $IMG_PATH . "Product/" . $hinh;
             echo '<tr>
                 <td>' . $ten_san_pham . '</td>
                 <td><img src="' . $hinh . '" width="100"></td>
-                <td>' . $formatted_amount . 'đ</td>
+                <td>' . FormatPrice($gia) . 'đ</td>
                 <td>' . $so_luong . '</td>
             </tr>';
         }

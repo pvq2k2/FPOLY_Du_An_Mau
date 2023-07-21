@@ -38,11 +38,11 @@
 
     <div class="form-box">
         <div class="form-group">
-            <input type="radio" value="0" name="phuong_thuc_thanh_toan" checked>
+            <input type="radio" value="1" name="phuong_thuc_thanh_toan" checked>
             <label for="">Thanh toán khi nhận hàng</label>
         </div>
         <div class="form-group">
-            <input type="radio" value="1" name="phuong_thuc_thanh_toan">
+            <input type="radio" value="2" name="phuong_thuc_thanh_toan">
             <label for="">Thanh toán qua ngân hàng</label>
         </div>
     </div>
@@ -62,21 +62,19 @@
             $total_amount = 0;
             foreach ($ListProductInCart as $Cart) {
                 extract($Cart);
-                $formatted_amount = number_format($gia, 0, ',', '.');
                 $total_amount += $gia * $so_luong;
                 $hinh = $IMG_PATH . "Product/" . $hinh;
                 echo '<tr>
             <td>' . $ten_san_pham . '</td>
             <td><img src="' . $hinh . '" width="100"></td>
-            <td>' . $formatted_amount . 'đ</td>
+            <td>' . FormatPrice($gia) . 'đ</td>
             <td>' . $so_luong . '</td>
         </tr>';
             }
-            $formatted_total_amount = number_format($total_amount, 0, ',', '.');
             echo '</table>
             <input type="hidden" name="tong_tien" value="' . $total_amount . '">
             <input type="hidden" name="tai_khoan_id" value="' . $tai_khoan_id . '">
-    <h2>Tổng tiền: ' . $formatted_total_amount . 'đ</h2>';
+    <h2>Tổng tiền: ' . FormatPrice($total_amount) . 'đ</h2>';
         } else {
             echo '<h1>Không có sản phẩm nào</h1>';
         }

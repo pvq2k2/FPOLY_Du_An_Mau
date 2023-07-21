@@ -13,27 +13,11 @@ if (isset($_SESSION['user'])) {
     ';
         foreach ($ListOrder as $Order) {
             extract($Order);
-            $formatted_amount = number_format($tong_tien, 0, ',', '.');
-            $status =  "";
-            switch ($trang_thai) {
-                case 0:
-                    $status = "Chờ xác nhận";
-                    break;
-                case 1:
-                    $status = "Đang xử lý";
-                    break;
-                case 2:
-                    $status = "Đang giao hàng";
-                    break;
-                case 3:
-                    $status = "Thành công";
-                    break;
-            }
             echo '<tr>
             <td>' . $don_hang_id . '</td>
             <td>' . $ngay_dat . '</td>
-            <td>' . $formatted_amount . 'đ</td>
-            <td> ' . $status . '</td>
+            <td>' . FormatPrice($tong_tien) . 'đ</td>
+            <td> ' . FormatOrderStatus($trang_thai) . '</td>
             <td>
                 <a href="index.php?act=order_detail&id=' . $don_hang_id . '">Chi tiết</a>
             </td>
