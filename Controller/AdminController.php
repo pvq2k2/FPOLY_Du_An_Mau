@@ -1,15 +1,14 @@
 <?php
 include "../../Models/pdo.php";
-include "../../Helper/UploadHelper.php";
 include "../../Models/Category.php";
 include "../../Models/Product.php";
 include "../../Models/User.php";
 include "../../Models/Comment.php";
+include "../../Models/Order.php";
+include "../../Helper/UploadHelper.php";
+include "../../Helper/FormatHelper.php";
 
-/**
- * Kiểm tra yêu cầu từ trên đường dẫn
- * isset -> kiểm tra sự tồn tại của giá trị
- */
+
 if (!isset($_SESSION['user']) || $_SESSION['user']['vai_tro'] == 0) {
     header('Location: http://localhost/FPOLY_DAM/index.php');
     exit();
@@ -58,7 +57,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "../../View/Admin/Category/List.php";
             break;
             // End Category
-
 
             // Product
         case 'list_product':
@@ -201,6 +199,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "../../View/Admin/User/List.php";
             break;
             // End User
+
+            //Comment
         case 'list_product_comment':
             if (isset($_POST['btn_filler_product']) && ($_POST['btn_filler_product'])) {
                 $keyWord = $_POST['keyWord'];
@@ -231,7 +231,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'remove_comment':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveComment($_GET['id']);
-                // Gửi phản hồi về trình duyệt thông qua Ajax
                 echo 'success';
                 exit();
             } else {
@@ -256,6 +255,24 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 echo 'error';
                 exit();
             }
+            break;
+            // End Comment
+
+            // Order
+        case 'list_order':
+            if (isset($_POST['btn_filler_order']) && ($_POST['btn_filler_order'])) {
+                $keyWord = $_POST['keyWord'];
+                $trang_thai = $_POST['trang_thai'];
+                $ngay_bat_dau = $_POST['ngay_bat_dau'];
+                $ngay_ket_thuc = $_POST['ngay_ket_thuc'];
+            } else {
+                $keyWord = '';
+                $trang_thai = 0;
+                $ngay_bat_dau = '';
+                $ngay_ket_thuc = '';
+            }
+            $ListOrder = GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc);
+            include "../../View/Admin/Order/List.php";
             break;
         default:
             // include "Layout/content.php";

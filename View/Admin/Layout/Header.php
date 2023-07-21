@@ -31,5 +31,6 @@ session_start();
       <li><a href="index.php?act=list_product">Sản phẩm</a></li>
       <li><a href="index.php?act=list_user">Tài khoản</a></li>
       <li><a href="index.php?act=list_product_comment">Bình luận</a></li>
+      <li><a href="index.php?act=list_order">Đơn hàng</a></li>
     </ul>
   </header>
