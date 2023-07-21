@@ -283,6 +283,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "../../View/Admin/Order/Detail.php";
             break;
+        case 'get_update_order':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $Order = GetOneOrder($_GET['id']);
+            }
+            include "../../View/Admin/Order/Update.php";
+            break;
         default:
             // include "Layout/content.php";
             break;
