@@ -36,6 +36,12 @@ function SimilarProduct($san_pham_id, $danh_muc_id)
     return pdo_query($sql);
 }
 
+function UpdateViewProduct($san_pham_id)
+{
+    $sql = "UPDATE san_pham SET so_luot_xem = so_luot_xem + 1 WHERE san_pham_id= " . $san_pham_id;
+    pdo_execute($sql);
+}
+
 function GetOneProduct($san_pham_id)
 {
     $sql = "SELECT * FROM san_pham WHERE san_pham_id=" . $san_pham_id;

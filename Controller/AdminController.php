@@ -327,10 +327,13 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 exit();
             }
             break;
+        case 'dashboard':
+            include "../../View/Admin/Layout/Home.php";
+            break;
         default:
-            // include "Layout/content.php";
+            include "../../View/User/404.php";
             break;
     }
 } else {
-    // include "Layout/content.php";
+    include "../../View/Admin/Layout/Home.php";
 }

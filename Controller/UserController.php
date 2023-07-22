@@ -97,6 +97,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['product_id']) && ($_GET['product_id'] > 0)) {
                 $Product = GetOneProduct($_GET['product_id']);
                 extract($Product);
+                UpdateViewProduct($_GET['product_id']);
                 $ListSimilarProduct = SimilarProduct($_GET['product_id'], $danh_muc_id);
                 include "View/User/Product/ProductDetail.php";
                 $action = 'success';
