@@ -6,12 +6,14 @@ include "../../Models/User.php";
 include "../../Models/Comment.php";
 include "../../Models/Order.php";
 include "../../Models/OrderDetail.php";
+include "../../Models/Statistics.php";
 include "../../Helper/UploadHelper.php";
 include "../../Helper/FormatHelper.php";
+include "../../Global.php";
 
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['vai_tro'] == 0) {
-    header('Location: http://localhost/FPOLY_DAM/index.php');
+    header('Location: ' . $ROOT_URL . 'index.php');
     exit();
 }
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
@@ -328,6 +330,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             break;
         case 'dashboard':
+            $so_luong_nguoi_dung = StatisticsOnTheNumberOfUsers();
+            $so_luong_binh_luan = StatisticsOfTheTotalNumberOfComments();
+            $so_luong_don_hang = OrderQuantityStatistics();
+            $tong_doanh_thu = TotalRevenueStatistics();
+
+            $DataChartCategory = StatisticsOnTheNumberOfProductsInTheCategory();
+            $san_pham_nhieu_luot_xem = ProductStatisticsWithTheMostViews();
+            $san_pham_mua_nhieu = MostPurchasedProductStatistics();
             include "../../View/Admin/Layout/Home.php";
             break;
         default:
@@ -335,5 +345,5 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
     }
 } else {
-    include "../../View/Admin/Layout/Home.php";
+    header('Location: ' . $ROOT_URL . 'index.php?act=dashboard');
 }
