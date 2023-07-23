@@ -44,7 +44,7 @@ session_start();
                     <a href="index.php?act=my_order">Đơn hàng của tôi</a>
                     <a href="index.php?act=forgot_password">Quên mật khẩu</a>
                     <?php if ($vai_tro == 1) { ?>
-                        <a href="view/admin/index.php">Trang quản trị</a>
+                        <a href="view/admin/index.php?act=dashboard">Trang quản trị</a>
                     <?php } ?>
                     <a href="index.php?act=update_information">Cập nhật thông tin</a>
                     <a href="index.php?act=logout">Đăng xuất</a>
