@@ -3,6 +3,10 @@ function FormatPrice($price)
 {
     return number_format($price, 0, ',', '.') . "đ";
 }
+function FormatNumber($number)
+{
+    return number_format($number, 0, ',', '.');
+}
 function FormatPaymentMethods($phuong_thuc_thanh_toan)
 {
     switch ($phuong_thuc_thanh_toan) {
