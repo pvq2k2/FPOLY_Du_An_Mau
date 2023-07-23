@@ -17,7 +17,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
     switch ($act) {
         case 'logout':
             session_unset();
-            header('Location: index.php');
+            header('Location: ' . $ROOT_URL . 'index.php?act=login');
             break;
         case 'forgot_password':
             if (isset($_POST['btn_forgot_password']) && ($_POST['btn_forgot_password'])) {
