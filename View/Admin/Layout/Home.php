@@ -1,3 +1,7 @@
+<script>
+    document.title = "VQMA - Bảng điều khiển";
+</script>
+
 <div class="box_main mt-8 ml-2">
     <div class="breadcumrb">
 

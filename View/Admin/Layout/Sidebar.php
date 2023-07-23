@@ -8,7 +8,13 @@ session_start();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <link rel="icon" type="image/png" href="../../Img/logo_admin.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../Img/logo_admin.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../Img/logo_admin.png">
+  <meta name="msapplication-TileImage" content="../../Img/logo_admin.png">
+  <meta name="msapplication-TileColor" content="#RRGGBB">
+
+  <title>Văn Quyết Mobile</title>
 
   <!-- Đường dẫn tới các tệp tin CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css">
