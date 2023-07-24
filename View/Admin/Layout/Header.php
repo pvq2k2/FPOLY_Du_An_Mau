@@ -1,6 +1,6 @@
 <?php include_once "../../Global.php"; ?>
-<main class="relative h-full rounded-xl transition-all duration-200 w-full mt-4 ml-6">
-    <nav class="flex flex-wrap items-center justify-between px-0 py-2 mr-6 transition-all duration-250 rounded-2xl sticky top-[3%] left-0 right-0 backdrop-saturate-[200%] backdrop-blur-[30px] bg-[hsla(0,0%,100%,0.8)] shadow-xl z-50">
+<main class="relative h-full rounded-xl transition-all duration-200 w-full mt-4 mx-6">
+    <nav class="flex flex-wrap items-center justify-between px-0 py-2 transition-all duration-250 rounded-2xl sticky top-[3%] left-0 right-0 backdrop-saturate-[200%] backdrop-blur-[30px] bg-[hsla(0,0%,100%,0.8)] shadow-xl z-50">
         <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
 
             <div class="flex items-center">
@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center mt-2  sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+            <div class="flex items-center mt-2 sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
                 <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
 
                     <li class="relative flex items-center pr-2">

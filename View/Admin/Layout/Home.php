@@ -2,7 +2,7 @@
     document.title = "VQMA - Bảng điều khiển";
 </script>
 
-<div class="box_main mt-8 ml-2">
+<section class="box_main mt-8 ml-2">
     <div class="breadcumrb">
 
         <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
@@ -13,10 +13,10 @@
         </ol>
         <h3 class="mb-0 font-bold capitalize text-2xl leading-10">Bảng điều khiển</h3>
     </div>
-</div>
+</section>
 
 
-<div class="w-full pr-6 py-6 mx-auto">
+<section class="w-full py-6 mx-auto">
 
     <div class="flex flex-wrap -mx-3">
 
@@ -211,7 +211,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <script>
     $(document).ready(function() {

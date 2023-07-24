@@ -55,9 +55,13 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'remove_category':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveCategory($_GET['id']);
+                $_SESSION['success_message'] = 'Sản phẩm đã được thêm vào giỏ hàng thành công!';
+                echo 'success';
+                exit();
+            } else {
+                echo 'error';
+                exit();
             }
-            $ListCategory = GetAllCategory();
-            include "../../View/Admin/Category/List.php";
             break;
             // End Category
 
