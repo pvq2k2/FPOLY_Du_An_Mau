@@ -8,7 +8,7 @@
             <li class="leading-normal text-sm">
                 <ion-icon name="home-outline"></ion-icon>
             </li>
-            <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page"><a href="index.php?act=list_category">Danh mục</a></li>
+            <li class="hover:underline hover:text-blue-500 transition duration-150 ease-out hover:ease-in text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page"><a href="index.php?act=list_category">Danh mục</a></li>
             <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Thêm danh mục</li>
         </ol>
         <h3 class="mb-0 font-bold capitalize text-2xl leading-10">Thêm danh mục</h3>
@@ -52,7 +52,7 @@ if (isset($_SESSION['success_message'])) {
             },
             messages: {
                 ten_danh_muc: {
-                    required: "Vui lòng nhập nội dung !",
+                    required: "Vui lòng nhập tên danh mục !",
                 },
             },
             errorPlacement: function(error, element) {
@@ -65,9 +65,8 @@ if (isset($_SESSION['success_message'])) {
                 $(element).closest(".form-group").find("#ten_danh_muc").removeClass(" border border-red-500");
             },
             submitHandler: function(form) {
-                console.dir(form);
                 if (this.checkForm()) {
-                    form[2].onsubmit();
+                    form.submit();
                 } else {
                     $(form).find(":input.error:first").focus();
                 }

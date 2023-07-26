@@ -46,7 +46,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $ten_danh_muc = $_POST['ten_danh_muc'];
                 $danh_muc_id = $_POST['danh_muc_id'];
                 UpdateCategory($danh_muc_id, $ten_danh_muc);
-                $msg = "Cập nhật thành công";
+                $_SESSION['success_message'] = 'Cập nhật danh mục thành công!';
             }
             $ListCategory = GetAllCategory();
             include "../../View/Admin/Category/List.php";
