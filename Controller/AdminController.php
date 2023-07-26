@@ -141,11 +141,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'remove_product':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-
                 RemoveProduct($_GET['id']);
+                $_SESSION['success_message'] = 'Xóa sản phẩm thành công!';
+                echo 'success';
+                exit();
+            } else {
+                echo 'error';
+                exit();
             }
-            $ListProduct = GetAllProduct('', 0);
-            include "../../View/Admin/Product/List.php";
             break;
             // End Product
 

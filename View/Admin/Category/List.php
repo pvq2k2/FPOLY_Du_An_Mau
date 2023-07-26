@@ -2,7 +2,7 @@
     document.title = "VQMA - Danh sách danh mục";
 </script>
 
-<section class="my-8 ml-2 md:flex md:items-center md:justify-between">
+<section class="my-8 ml-2 md:flex md:items-end md:justify-between">
     <div class="breadcumrb">
         <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
             <li class="leading-normal text-sm">
@@ -13,8 +13,8 @@
         <h3 class="mb-0 font-bold capitalize text-2xl leading-10">Danh sách danh mục</h3>
     </div>
     <a href="index.php?act=add_category">
-        <button class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
-            <ion-icon name="add-circle-outline" class="text-xl"></ion-icon>
+        <button class="flex items-center justify-center w-1/2 px-5 py-2 text-base tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
+            <ion-icon name="add-circle-outline" class="text-2xl"></ion-icon>
 
             <span>Thêm danh mục</span>
         </button>
@@ -23,7 +23,7 @@
 
 
 <section class="w-full mx-auto">
-    <div class="flex flex-col">
+    <div class="flex flex-col shadow-xl rounded-lg">
         <div class="-my-2 overflow-x-auto">
             <div class="inline-block min-w-full py-2 align-middle">
                 <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -97,7 +97,7 @@
     </div>
 
     <div class="flex items-center justify-between mt-6">
-        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+        <a href="#" class="flex items-center px-5 py-2 shadow-xl text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
             <ion-icon name="return-down-back-outline" class="text-xl rtl:-scale-x-100"></ion-icon>
             <span>
                 Quay lại
@@ -114,7 +114,7 @@
             <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">14</a>
         </div>
 
-        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+        <a href="#" class="flex items-center px-5 py-2 shadow-xl text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
             <span>
                 Tiếp theo
             </span>
