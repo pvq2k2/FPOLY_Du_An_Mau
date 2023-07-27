@@ -86,16 +86,16 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
                 $hinh = $_FILES['hinh'];
                 $UPLOAD_DIR = '../../Upload/Product/';
-                $isSuccess = UploadImage($hinh, $UPLOAD_DIR);
+                $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
 
                 $ngay_nhap = $_POST['ngay_nhap'];
                 $mo_ta = $_POST['mo_ta'];
                 $danh_muc_id = $_POST['danh_muc_id'];
-                if ($isSuccess[1]) {
-                    CreateProduct($ten_san_pham, $gia, $isSuccess[2], $ngay_nhap, $mo_ta, $danh_muc_id);
-                    $msg = "Thêm thành công";
+                if ($isUploadFile[1]) {
+                    CreateProduct($ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
+                    $_SESSION['success_message'] = "Thêm sản phẩm thành công";
                 } else {
-                    echo $isSuccess[0];
+                    $_SESSION['error_message'] = $isUploadFile[0];
                 }
             }
             $ListCategory = GetAllCategory();
