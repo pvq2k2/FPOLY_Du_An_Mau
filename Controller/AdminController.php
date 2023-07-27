@@ -123,15 +123,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
                 if ($hinh['name'] == '') {
                     UpdateProduct($san_pham_id, $ten_san_pham, $gia, $hinh['name'], $ngay_nhap, $mo_ta, $danh_muc_id);
-                    $msg = "Cập nhật thành công";
+                    $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
                 } else {
-                    $UPLOAD_DIR = $IMG_PATH . 'Product/';
-                    $isSuccess = UploadImage($hinh, $UPLOAD_DIR);
-                    if ($isSuccess[1]) {
-                        UpdateProduct($san_pham_id, $ten_san_pham, $gia, $isSuccess[2], $ngay_nhap, $mo_ta, $danh_muc_id);
-                        $msg = "Cập nhật thành công";
+                    $UPLOAD_DIR = '../../Upload/Product/';
+                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                    if ($isUploadFile[1]) {
+                        UpdateProduct($san_pham_id, $ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
+                        $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
                     } else {
-                        echo $isSuccess[0];
+                        echo $isUploadFile[0];
                     }
                 }
             }

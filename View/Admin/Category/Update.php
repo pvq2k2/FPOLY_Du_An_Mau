@@ -42,13 +42,6 @@ if (is_array($Category)) {
     </div>
 </form>
 
-<?php
-if (isset($_SESSION['success_message'])) {
-    echo '<script>toastr.success("' . $_SESSION['success_message'] . '")</script>';
-    unset($_SESSION['success_message']);
-}
-?>
-
 <script>
     $(document).ready(function() {
         $("#updateCategory").validate({
