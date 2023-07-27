@@ -161,13 +161,18 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'remove_user':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 if ($_SESSION['user']['tai_khoan_id'] == $_GET['id']) {
-                    echo "Không thể xóa tài khoản này!";
+                    echo 'this account cannot be deleted';
+                    exit();
                 } else {
                     RemoveUser($_GET['id']);
+                    $_SESSION['success_message'] = 'Xóa sản phẩm thành công!';
+                    echo 'success';
+                    exit();
                 }
+            } else {
+                echo 'error';
+                exit();
             }
-            $ListUser = GetAllUser();
-            include "../../View/Admin/User/List.php";
             break;
 
         case 'add_user':
