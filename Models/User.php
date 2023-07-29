@@ -35,9 +35,19 @@ function RemoveUser($tai_khoan_id)
     pdo_query($sql);
 }
 
-function CreateUser($ho_va_ten, $email, $mat_khau, $dia_chi, $so_dien_thoai, $vai_tro)
-{
-    $sql = "INSERT INTO tai_khoan(ho_va_ten, email, mat_khau, dia_chi, so_dien_thoai, vai_tro) VALUES('$ho_va_ten', '$email', '$mat_khau', '$dia_chi', '$so_dien_thoai', '$vai_tro')";
+function CreateUser(
+    $ho_va_ten,
+    $email,
+    $mat_khau,
+    $dia_chi,
+    $so_dien_thoai,
+    $gioi_tinh,
+    $hinh,
+    $vai_tro
+) {
+    $sql = "INSERT INTO 
+    tai_khoan(ho_va_ten, email, mat_khau, dia_chi, so_dien_thoai, gioi_tinh, hinh, vai_tro) 
+    VALUES('$ho_va_ten', '$email', '$mat_khau', '$dia_chi', '$so_dien_thoai', '$gioi_tinh', '$hinh', '$vai_tro')";
     pdo_execute($sql);
 }
 

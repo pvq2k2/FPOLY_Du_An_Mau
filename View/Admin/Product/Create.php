@@ -59,7 +59,7 @@
         <div class="form-group sm:col-span-3">
             <label for="danh_muc_id" class="block text-base font-medium leading-6 text-gray-900 mb-3">Danh mục</label>
             <select name="danh_muc_id" id="danh_muc_id" class="appearance-none outline-none block w-full rounded-md py-1.5 px-5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6">
-                <option value="">Chọn danh mục</option>
+                <option value="" hidden>Chọn danh mục</option>
                 <?php
                 foreach ($ListCategory as $Category) {
                     extract($Category);

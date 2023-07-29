@@ -160,12 +160,12 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'remove_user':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                if ($_SESSION['user']['tai_khoan_id'] == $_GET['id']) {
+                if ($_SESSION['user']['tai_khoan_id'] == (int)$_GET['id']) {
                     echo 'this account cannot be deleted';
                     exit();
                 } else {
                     RemoveUser($_GET['id']);
-                    $_SESSION['success_message'] = 'Xóa sản phẩm thành công!';
+                    $_SESSION['success_message'] = 'Xóa tài khoản thành công!';
                     echo 'success';
                     exit();
                 }
@@ -182,10 +182,28 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $mat_khau = $_POST['mat_khau'];
                 $dia_chi = $_POST['dia_chi'];
                 $so_dien_thoai = $_POST['so_dien_thoai'];
+                $gioi_tinh = $_POST['gioi_tinh'];
                 $vai_tro = $_POST['vai_tro'];
 
-                CreateUser($ho_va_ten, $email, $mat_khau, $dia_chi, $so_dien_thoai, $vai_tro);
-                $msg = "Thêm thành công";
+                $hinh = $_FILES['hinh'];
+                $UPLOAD_DIR = '../../Upload/User/';
+                $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+
+                if ($isUploadFile[1]) {
+                    CreateUser(
+                        $ho_va_ten,
+                        $email,
+                        $mat_khau,
+                        $dia_chi,
+                        $so_dien_thoai,
+                        $gioi_tinh,
+                        $isUploadFile[2],
+                        $vai_tro
+                    );
+                    $_SESSION['success_message'] = "Thêm tài khoản thành công";
+                } else {
+                    $_SESSION['error_message'] = $isUploadFile[0];
+                }
             }
             include "../../View/Admin/User/Create.php";
             break;

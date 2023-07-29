@@ -60,7 +60,7 @@
                                 foreach ($ListUser as $User) {
                                     extract($User);
                                     $URLGetUpdateUser = "index.php?act=get_update_user&id=" . $tai_khoan_id;
-                                    $URLRemoveUser = "index.php?act=remove_user&id=" . $tai_khoan_id;
+                                    $URLRemoveUser = "index.php?act=remove_user&id=";
 
                                     $hinhPath = "../../Upload/User/" . $hinh;
                                     if (!is_file($hinhPath)) {
@@ -103,7 +103,7 @@
                                                     </button>
                                                 </a>
 
-                                                <button onclick="deleteUser()" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
+                                                <button onclick="deleteUser(<?= $tai_khoan_id ?>)" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
                                                     <ion-icon name="trash-outline" class="text-xl"></ion-icon>
                                                     <span>Xóa</span>
                                                 </button>
@@ -172,7 +172,7 @@ if (isset($_SESSION['error_message'])) {
 ?>
 
 <script>
-    function deleteUser() {
+    function deleteUser(tai_khoan_id) {
         new swal({
             title: 'Bạn có chắc chắn muốn xoá?',
             text: 'Hành động này sẽ không thể hoàn tác!',
@@ -183,9 +183,10 @@ if (isset($_SESSION['error_message'])) {
         }).then((willDelete) => {
             if (willDelete.value) {
                 $.ajax({
-                    url: '<?php echo $URLRemoveUser; ?>',
+                    url: `<?php echo $URLRemoveUser; ?>${tai_khoan_id}`,
                     type: 'GET',
                     success: function(response) {
+                        console.log(response);
                         if (response.includes("success")) {
                             location.reload();
                         } else if (response.includes("Cannot delete or update a parent row: a foreign key constraint fails")) {
