@@ -371,7 +371,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $don_hang_id = $_POST['don_hang_id'];
 
                 UpdateOrder($don_hang_id, $ho_va_ten, $email, $dia_chi, $so_dien_thoai, $trang_thai);
-                $msg = "Cập nhật thành công";
+                $_SESSION['success_message'] = 'Cập nhật đơn hàng thành công!';
             }
             $keyWord = '';
             $trang_thai = 0;

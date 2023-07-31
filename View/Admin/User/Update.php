@@ -177,7 +177,7 @@ if (isset($_SESSION['error_message'])) {
                     required: "Vui lòng nhập email !",
                 },
                 so_dien_thoai: {
-                    required: "Vui lòng chọn số điện thoại !",
+                    required: "Vui lòng nhập số điện thoại !",
                 },
                 hinh: {
                     required: "Vui lòng chọn hình !",
