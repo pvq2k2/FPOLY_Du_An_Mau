@@ -300,6 +300,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveComment($_GET['id']);
                 $_SESSION['success_message'] = 'Xóa bình luận thành công!';
+                echo 'success';
+                exit();
             } else {
                 echo 'error';
                 exit();
@@ -388,6 +390,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     }
                 }
                 RemoveOrder($_GET['id'], $ListOrderDetail);
+                $_SESSION['success_message'] = 'Xóa đơn hàng thành công!';
                 echo 'success';
                 exit();
             } else {

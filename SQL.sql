@@ -50,7 +50,7 @@ CREATE TABLE don_hang (
   dia_chi VARCHAR(255),
   so_dien_thoai VARCHAR(20),
   email VARCHAR(255) NOT NULL,
-  ngay_dat DATETIME,
+  ngay_dat DATE,
   tong_tien INT NOT NULL,
   phuong_thuc_thanh_toan TINYINT(1) DEFAULT 1 NOT NULL,
   trang_thai TINYINT(1) DEFAULT 1 NOT NULL,
