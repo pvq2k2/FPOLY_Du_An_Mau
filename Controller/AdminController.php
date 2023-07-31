@@ -295,9 +295,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             break;
 
+
         case 'remove_comment':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveComment($_GET['id']);
+                $_SESSION['success_message'] = 'Xóa bình luận thành công!';
                 echo 'success';
                 exit();
             } else {

@@ -102,6 +102,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $ListSimilarProduct = SimilarProduct($_GET['product_id'], $danh_muc_id);
 
                 if (isset($_POST['btn_add_comment']) && ($_POST['btn_add_comment'])) {
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
                     $noi_dung = $_POST['noi_dung'];
                     $tai_khoan_id = $_POST['tai_khoan_id'];
                     $san_pham_id = $_POST['san_pham_id'];
@@ -192,6 +193,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'check_out':
             if (isset($_POST['btn_check_out']) && ($_POST['btn_check_out'])) {
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
                 $tai_khoan_id = $_POST['tai_khoan_id'];
                 $ho_va_ten = $_POST['ho_va_ten'];
                 $dia_chi = $_POST['dia_chi'];

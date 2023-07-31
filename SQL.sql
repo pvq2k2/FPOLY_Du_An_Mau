@@ -38,7 +38,7 @@ CREATE TABLE binh_luan (
   noi_dung VARCHAR(255) NOT NULL,
   tai_khoan_id INT(11) NOT NULL,
   san_pham_id INT(11) NOT NULL,
-  ngay_binh_luan DATE NOT NULL,
+  ngay_binh_luan DATETIME NOT NULL,
   FOREIGN KEY (tai_khoan_id) REFERENCES tai_khoan(tai_khoan_id),
   FOREIGN KEY (san_pham_id) REFERENCES san_pham(san_pham_id)
 );
@@ -50,7 +50,7 @@ CREATE TABLE don_hang (
   dia_chi VARCHAR(255),
   so_dien_thoai VARCHAR(20),
   email VARCHAR(255) NOT NULL,
-  ngay_dat DATE,
+  ngay_dat DATETIME,
   tong_tien INT NOT NULL,
   phuong_thuc_thanh_toan TINYINT(1) DEFAULT 1 NOT NULL,
   trang_thai TINYINT(1) DEFAULT 1 NOT NULL,
