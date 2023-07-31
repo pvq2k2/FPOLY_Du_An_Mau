@@ -223,10 +223,44 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $mat_khau = $_POST['mat_khau'];
                 $dia_chi = $_POST['dia_chi'];
                 $so_dien_thoai = $_POST['so_dien_thoai'];
+                $gioi_tinh = $_POST['gioi_tinh'];
                 $vai_tro = $_POST['vai_tro'];
 
-                UpdateUser($tai_khoan_id, $ho_va_ten, $email, $mat_khau, $so_dien_thoai, $dia_chi, $vai_tro);
-                $msg = "Cập nhật thành công";
+                $hinh = $_FILES['hinh'];
+
+                if ($hinh['name'] == '') {
+                    UpdateUser(
+                        $tai_khoan_id,
+                        $ho_va_ten,
+                        $email,
+                        $mat_khau,
+                        $dia_chi,
+                        $so_dien_thoai,
+                        $gioi_tinh,
+                        $hinh['name'],
+                        $vai_tro
+                    );
+                    $_SESSION['success_message'] = "Cập nhật tài khoản thành công";
+                } else {
+                    $UPLOAD_DIR = '../../Upload/User/';
+                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                    if ($isUploadFile[1]) {
+                        UpdateUser(
+                            $tai_khoan_id,
+                            $ho_va_ten,
+                            $email,
+                            $mat_khau,
+                            $dia_chi,
+                            $so_dien_thoai,
+                            $gioi_tinh,
+                            $isUploadFile[2],
+                            $vai_tro
+                        );
+                        $_SESSION['success_message'] = 'Cập nhật tài khoản thành công!';
+                    } else {
+                        echo $isUploadFile[0];
+                    }
+                }
             }
             $ListUser = GetAllUser();
             include "../../View/Admin/User/List.php";

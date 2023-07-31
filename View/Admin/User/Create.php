@@ -217,12 +217,6 @@ if (isset($_SESSION['error_message'])) {
                 district: {
                     required: "Vui lòng chọn quận, huyện, thị xã !",
                 },
-                ward: {
-                    required: "Vui lòng chọn phường, xã !",
-                },
-                address: {
-                    required: "Vui lòng nhập địa chỉ chi tiết !",
-                }
             },
             errorPlacement: function(error, element) {
                 error.appendTo(element.closest(".form-group").find(".error-message"));
@@ -324,15 +318,24 @@ if (isset($_SESSION['error_message'])) {
                     const wardSelect = document.querySelector("#selectWard");
                     wardSelect.style.display = hasWard ? "block" : "none";
 
-                    // Nếu không có phường/xã, đồng thời cũng ẩn input nhập địa chỉ chi tiết
-                    if (!hasWard) {
+                    if (hasWard) {
+                        $("#ward").rules("add", {
+                            required: true,
+                            messages: {
+                                required: "Vui lòng chọn phường/xã !",
+                            },
+                        });
+                        $("#address").rules("add", {
+                            required: true,
+                            messages: {
+                                required: "Vui lòng nhập địa chỉ chi tiết !",
+                            },
+                        });
+                    } else {
                         document.querySelector("#inputAddress").style.display = "none";
+                        $("#ward").rules("remove", "required");
+                        $("#address").rules("remove", "required");
                     }
-
-                    updateProductForm.settings.rules.hinh = {
-                        required: true,
-                        imageExtension: true
-                    };
                 });
         }
 
@@ -384,11 +387,13 @@ if (isset($_SESSION['error_message'])) {
                     address.addEventListener("change", function(e) {
                         let addressString = e.target.value + ", " + wardElement + ", " + districtElement + ", " + cityElement;
                         resultElement.textContent = defaultString + addressString;
+                        addressString.replace(/\s+/g, ' ').trim();
                         diaChiInput.val(addressString);
                     });
                 } else {
                     let addressString = districtElement + ", " + cityElement;
                     resultElement.textContent = defaultString + addressString;
+                    addressString.replace(/\s+/g, ' ').trim();
                     diaChiInput.val(addressString);
                 }
             }

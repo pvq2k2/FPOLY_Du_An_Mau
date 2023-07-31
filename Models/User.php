@@ -57,8 +57,26 @@ function GetOneUser($tai_khoan_id)
     return pdo_query_one($sql);
 }
 
-function UpdateUser($tai_khoan_id, $ho_va_ten, $email, $mat_khau, $so_dien_thoai, $dia_chi, $vai_tro)
-{
-    $sql = "UPDATE tai_khoan SET ho_va_ten = '$ho_va_ten', email = '$email', mat_khau = '$mat_khau', so_dien_thoai = '$so_dien_thoai', dia_chi = '$dia_chi', vai_tro = '$vai_tro' WHERE tai_khoan_id=" . $tai_khoan_id;
+function UpdateUser(
+    $tai_khoan_id,
+    $ho_va_ten,
+    $email,
+    $mat_khau,
+    $dia_chi,
+    $so_dien_thoai,
+    $gioi_tinh,
+    $hinh,
+    $vai_tro
+) {
+    $sql = "UPDATE tai_khoan SET 
+     ho_va_ten = '$ho_va_ten',
+     email = '$email', 
+     mat_khau = '$mat_khau', 
+     dia_chi = '$dia_chi', 
+     so_dien_thoai = '$so_dien_thoai', 
+     gioi_tinh = '$gioi_tinh', 
+     hinh = '$hinh', 
+     vai_tro = '$vai_tro' 
+     WHERE tai_khoan_id=" . $tai_khoan_id;
     pdo_execute($sql);
 }
