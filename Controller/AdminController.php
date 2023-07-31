@@ -300,8 +300,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveComment($_GET['id']);
                 $_SESSION['success_message'] = 'Xóa bình luận thành công!';
-                echo 'success';
-                exit();
             } else {
                 echo 'error';
                 exit();
@@ -311,19 +309,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'get_update_comment':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 $Comment = GetOneComment($_GET['id']);
+                $Product = GetOneProduct($Comment['san_pham_id']);
             }
             include "../../View/Admin/Comment/Update.php";
             break;
 
         case 'update_comment':
             if (isset($_POST['btn_update_comment']) && ($_POST['btn_update_comment'])) {
+                $san_pham_id = $_POST['san_pham_id'];
                 UpdateComment($_POST['binh_luan_id'], $_POST['noi_dung']);
-                echo 'success';
-                exit();
-            } else {
-                echo 'error';
-                exit();
+                $_SESSION['success_message'] = 'Cập nhật bình luận thành công!';
+                $Product = GetOneProduct($san_pham_id);
+                $ListComment = GetAllCommentByID('', $san_pham_id);
+                include "../../View/Admin/Comment/Detail.php";
             }
+
             break;
             // End Comment
 
