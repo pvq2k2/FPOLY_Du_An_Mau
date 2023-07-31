@@ -30,8 +30,11 @@
         ?>
             <div class="overlay" style="position: absolute; width: 100%; height: 100%; text-align: center; line-height: 50%; background-color: #ccc; color: #000; border-radius: 10px;">Vui lòng đăng nhập để bình luận</div>
         <?php } ?>
-        <form action="">
-            <textarea name="" id="" cols="30" rows="10" style="width: 100%; border-radius: 10px;"></textarea>
+        <form action="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" method="post">
+            <textarea name="noi_dung" id="" cols="30" rows="10" style="width: 100%; border-radius: 10px;"></textarea>
+            <input type="hidden" name="tai_khoan_id" value="<?= $_SESSION['user']['tai_khoan_id'] ?>">
+            <input type="hidden" name="san_pham_id" value="<?= $san_pham_id ?>">
+            <input type="submit" name="btn_add_comment" value="Bình luận" class="shadow-xl rounded-md bg-blue-500 px-5 py-2 text-base font-semibold text-white hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-150 ease-out hover:ease-in">
         </form>
     </div>
 

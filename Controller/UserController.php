@@ -5,6 +5,7 @@ include "Models/Product.php";
 include "Models/User.php";
 include "Models/Cart.php";
 include "Models/Order.php";
+include "Models/Comment.php";
 include "Models/OrderDetail.php";
 include "Helper/FormatHelper.php";
 include "Global.php";
@@ -99,8 +100,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 extract($Product);
                 UpdateViewProduct($_GET['product_id']);
                 $ListSimilarProduct = SimilarProduct($_GET['product_id'], $danh_muc_id);
+
+                if (isset($_POST['btn_add_comment']) && ($_POST['btn_add_comment'])) {
+                    $noi_dung = $_POST['noi_dung'];
+                    $tai_khoan_id = $_POST['tai_khoan_id'];
+                    $san_pham_id = $_POST['san_pham_id'];
+                    $ngay_binh_luan = date("Y-m-d H:i:s");
+                    CreateComment($noi_dung, $tai_khoan_id, $san_pham_id, $ngay_binh_luan);
+                }
                 include "View/User/Product/ProductDetail.php";
-                $action = 'success';
             } else {
                 include "View/User/404.php";
             }
