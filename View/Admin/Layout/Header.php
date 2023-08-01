@@ -61,10 +61,10 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <a href="<?= $ROOT_URL ?>index.php" class="rounded-lg  hover:bg-gradient-to-tl from-blue-500 to-orange-500 hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
+                                    <a href="<?= $ROOT_URL ?>index.php" class="rounded-lg  hover:bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
                                         Về trang chủ
                                     </a>
-                                    <a href="<?= $ROOT_URL ?>index.php?act=logout" class="rounded-lg  hover:bg-gradient-to-tl from-blue-500 to-orange-500 hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
+                                    <a href="<?= $ROOT_URL ?>index.php?act=logout" class="rounded-lg  hover:bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
                                         Đăng xuất
                                     </a>
                                 </div>

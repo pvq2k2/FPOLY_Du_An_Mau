@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
-                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-blue-500 to-orange-500">
+                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670]">
                                 <ion-icon name="person-outline" class="leading-none text-2xl relative top-3 text-white"></ion-icon>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
-                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-blue-500 to-orange-500">
+                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670]">
                                 <ion-icon name="chatbubbles-outline" class="leading-none text-2xl relative top-3 text-white"></ion-icon>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
-                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-blue-500 to-orange-500">
+                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670]">
                                 <ion-icon name="cart-outline" class="leading-none text-2xl relative top-3 text-white"></ion-icon>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                         <div class="px-3 text-right basis-1/3">
-                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-blue-500 to-orange-500">
+                            <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670]">
                                 <ion-icon name="cash-outline" class="leading-none text-2xl relative top-3 text-white"></ion-icon>
                             </div>
                         </div>

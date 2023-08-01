@@ -8,10 +8,10 @@ session_start();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="../../Img/logo_admin.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../Img/logo_admin.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="../../Img/logo_admin.png">
-  <meta name="msapplication-TileImage" content="../../Img/logo_admin.png">
+  <link rel="icon" type="image/png" href="../../Img/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../Img/logo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../Img/logo.png">
+  <meta name="msapplication-TileImage" content="../../Img/logo.png">
   <meta name="msapplication-TileColor" content="#RRGGBB">
 
   <title>Văn Quyết Mobile</title>
@@ -48,8 +48,8 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
       <div class="h-19">
         <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
         <a class="block px-8 py-6 m-0 text-base whitespace-nowrap text-slate-700" href="index.php?act=dashboard">
-          <img src="../../Img/logo_admin.png" class="inline h-full max-w-full transition-all duration-200 max-h-8" alt="main_logo" />
-          <span class="ml-1 font-semibold transition-all duration-200">Văn Quyết Mobile</span>
+          <img src="../../Img/logo.png" class="inline h-full max-w-full transition-all duration-200 max-h-8" alt="main_logo" />
+          <span class="bg-gradient-to-r from-[#4ba3e7] to-[#0f4670] text-transparent bg-clip-text ml-1 font-bold transition-all duration-200">Văn Quyết Mobile</span>
         </a>
       </div>
       <hr class="mx-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
@@ -59,7 +59,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
         <ul class="flex flex-col pl-0 mb-0">
           <li class="mt-0.5 w-full group">
             <a class="<?php echo ($act == "dashboard" ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=dashboard">
-              <div class="<?php echo ($act == "dashboard" ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($act == "dashboard" ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="home-outline"></ion-icon>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Bảng điều khiển</span>
@@ -68,7 +68,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
 
           <li class="mt-0.5 w-full group">
             <a class="<?php echo ($isActiveCategory ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_category">
-              <div class="<?php echo ($isActiveCategory ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($isActiveCategory ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="library-outline"></ion-icon>
                 </svg>
               </div>
@@ -78,7 +78,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
 
           <li class="mt-0.5 w-full group">
             <a class="<?php echo ($isActiveProduct ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_product">
-              <div class="<?php echo ($isActiveProduct ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($isActiveProduct ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="phone-portrait-outline"></ion-icon>
                 </svg>
               </div>
@@ -88,7 +88,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
 
           <li class="mt-0.5 w-full group">
             <a class="<?php echo ($isActiveUser ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_user">
-              <div class="<?php echo ($isActiveUser ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($isActiveUser ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="person-outline"></ion-icon>
                 </svg>
               </div>
@@ -98,7 +98,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
 
           <li class="mt-0.5 w-full group">
             <a class="<?php echo ($isActiveComment ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_product_comment">
-              <div class="<?php echo ($isActiveComment ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($isActiveComment ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="chatbubbles-outline"></ion-icon>
                 </svg>
               </div>
@@ -108,7 +108,7 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
 
           <li class="mt-0.5 w-full">
             <a class="<?php echo ($isActiveOrder ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base my-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_order">
-              <div class="<?php echo ($isActiveOrder ? "bg-gradient-to-tl from-blue-500 to-orange-500 text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+              <div class="<?php echo ($isActiveOrder ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
                 <ion-icon name="cart-outline"></ion-icon>
                 </svg>
               </div>
