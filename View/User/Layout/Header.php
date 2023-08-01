@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "Global.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,13 @@ session_start();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="Img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Img/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="Img/logo.png">
+    <meta name="msapplication-TileImage" content="Img/logo.png">
+    <meta name="msapplication-TileColor" content="#RRGGBB">
+
+    <title>Văn Quyết Mobile</title>
 
     <!-- Đường dẫn tới các tệp tin CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css">
@@ -19,41 +26,117 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header>
-        <ul>
-            <li><a href="index.php">Trang chủ</a></li>
-            <li><a href="index.php?act=introduce">Giới thiệu</a></li>
-            <li><a href="index.php?act=contact">Liên hệ</a></li>
-            <li><a href="index.php?act=feedback">Góp ý</a></li>
-            <li><a href="index.php?act=qa">Hỏi đáp</a></li>
+<body class="m-0 bg-gray-50 text-slate-500">
+    <div class="header-top bg-[#0f4670]">
+        <div class="container mx-auto">
+            <ul class="flex justify-end gap-x-10 text-white">
+                <li class="py-2 group block relative transition duration-300 ease-out hover:ease-in">
+                    <a href="index.php?act=introduce" class="group-hover:text-[#74bcec] transition duration-200 ease-in-out">Giới thiệu</a>
+                    <div class="absolute left-0 bottom-0 w-full h-[2px] bg-[#74bcec] scale-x-0 transition duration-300 ease-in-out group-hover:scale-x-100"></div>
+                </li>
+                <li class="py-2 group block relative transition duration-300 ease-out hover:ease-in">
+                    <a href="index.php?act=contact" class="group-hover:text-[#74bcec] transition duration-200 ease-in-out">Liên hệ</a>
+                    <div class="absolute left-0 bottom-0 w-full h-[2px] bg-[#74bcec] scale-x-0 transition duration-300 ease-in-out group-hover:scale-x-100"></div>
+                </li>
+                <li class="py-2 group block relative transition duration-300 ease-out hover:ease-in">
+                    <a href="index.php?act=feedback" class="group-hover:text-[#74bcec] transition duration-200 ease-in-out">Góp ý</a>
+                    <div class="absolute left-0 bottom-0 w-full h-[2px] bg-[#74bcec] scale-x-0 transition duration-300 ease-in-out group-hover:scale-x-100"></div>
+                </li>
+                <li class="py-2 group block relative transition duration-300 ease-out hover:ease-in">
+                    <a href="index.php?act=qa" class="group-hover:text-[#74bcec] transition duration-200 ease-in-out">Hỏi đáp</a>
+                    <div class="absolute left-0 bottom-0 w-full h-[2px] bg-[#74bcec] scale-x-0 transition duration-300 ease-in-out group-hover:scale-x-100"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-            <form action="index.php?act=search" class="formSearch" method="post">
-                <input type="text" name="keyWord">
-                <input type="submit" name="search" value="Tìm kiếm">
-            </form>
-
-            <div>
-                <?php if (isset($_SESSION['user'])) {
-                    extract($_SESSION['user']);
-                ?>
-
-                    <h2>Xin chào <?= $ho_va_ten ?></h2>
-                    <a href="index.php?act=my_order">Đơn hàng của tôi</a>
-                    <a href="index.php?act=forgot_password">Quên mật khẩu</a>
-                    <?php if ($vai_tro == 1) { ?>
-                        <a href="view/admin/index.php?act=dashboard">Trang quản trị</a>
-                    <?php } ?>
-                    <a href="index.php?act=update_information">Cập nhật thông tin</a>
-                    <a href="index.php?act=logout">Đăng xuất</a>
-                <?php } else { ?>
-                    <a href="index.php?act=login">Đăng nhập</a>
-                    <a href="index.php?act=register">Đăng ký</a>
-                <?php } ?>
+    <div class="header-main mb-3 mt-5 sticky top-0 transition-all duration-300 ease-in-out">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="logo w-64">
+                <a href="<?= $ROOT_URL ?>index.php">
+                    <img src="Img/logo_horizontal.png" alt="">
+                </a>
             </div>
+            <div class="search">
+                <form action="index.php?act=search" class="formSearch" method="post">
+                    <div class="relative flex items-center mt-4 md:mt-0">
+                        <label for="btn_search" class="shadow-xl absolute cursor-pointer right-[10px] top-[-10px] w-[40px] h-[40px] rounded-2xl flex justify-center items-center bg-gradient-to-r from-[#4ba3e7] to-[#0f4670] hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7]">
+                            <input id="btn_search" type="submit" name="search" value="Tìm kiếm" hidden>
+                            <ion-icon name="search-outline" class="text-white m-auto text-xl"></ion-icon>
+                        </label>
+                        <input type="text" name="keyWord" placeholder="Hôm nay bạn cần tìm gì ?" class="shadow-xl block w-[700px] py-1.5 pl-5 pr-14 text-gray-700 bg-white border border-gray-200 rounded-3xl placeholder-gray-400/70 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+                    </div>
+                </form>
+            </div>
+            <div class="box-icon flex items-center gap-x-10">
+                <div id="toggleModalUser" class="user relative group">
+                    <ion-icon name="person-outline" class="text-3xl cursor-pointer group-hover:text-[#74bcec] transition-all duration-300 ease-linear"></ion-icon>
 
-            <a href="index.php?act=cart">Giỏ hàng</a>
-        </ul>
-    </header>
+                    <div id="boxList" class="absolute top-16 bg-white shadow-xl z-20 p-3 rounded-lg ease-linear duration-300 w-60 xl:left-[-100px] lg:right-[-96px]  group-hover:visible
+                                    before:absolute before:-top-2 xl:before:left-[100px] before:lg:left-[120px]
+                                    before:w-5 before:h-5 before:bg-white before:rounded before:rotate-45 before:z-10 
+                                    hidden backdrop-saturate-[200%] backdrop-blur-[30px] bg-[hsla(0,0%,100%,0.8)]">
+                        <div class="user_box">
+                            <ul>
+                                <div>
+                                    <?php if (isset($_SESSION['user'])) {
+                                        extract($_SESSION['user']);
+                                    ?>
+                                        <div class="items-center pb-3 w-full">
+                                            <div class="ml-4">
+                                                <div class="text-sm text-gray-500">
+                                                    Xin chào !
+                                                </div>
+                                                <div>
+                                                    <span class="user-name text-base font-medium text-gray-900"><?= $_SESSION['user']['ho_va_ten'] ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="index.php?act=my_order" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Đơn hàng của tôi</a>
+                                        <a href="index.php?act=forgot_password" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Quên mật khẩu</a>
+                                        <?php if ($vai_tro == 1) { ?>
+                                            <a href="view/admin/index.php?act=dashboard" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Trang quản trị</a>
+                                        <?php } ?>
+                                        <a href="index.php?act=update_information" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Cập nhật thông tin</a>
+                                        <a href="index.php?act=logout" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Đăng xuất</a>
+                                    <?php } else { ?>
+                                        <a href="index.php?act=login" class="mt-1 rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
+                                            Đăng nhập
+                                        </a>
+                                        <a href="index.php?act=register" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">
+                                            Đăng ký
+                                        </a>
+                                    <?php } ?>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <a href="index.php?act=cart" class="group">
+                    <ion-icon name="cart-outline" class="text-3xl group-hover:text-[#74bcec] transition-all duration-300 ease-linear"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#toggleModalUser").on("click", function() {
+                $("#boxList").toggleClass("hidden");
+            });
+            $(window).scroll(function() {
+                if ($(this).scrollTop()) {
+                    $('.header-main').addClass(' bg-white shadow-xl');
+                } else {
+                    $('.header-main').removeClass(' bg-white shadow-xl');
+                }
+            });
+        });
+    </script>
