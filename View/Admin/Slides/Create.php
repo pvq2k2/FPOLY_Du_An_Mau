@@ -28,13 +28,13 @@
         <input id="san_pham_id" name="san_pham_id" type="text" placeholder="Nhập sản phẩm id...." class="block w-full outline-none indent-3 rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6">
         <div class="error-message text-red-500 text-sm ml-1 mt-1"></div>
     </div>
+
     <div class="form-group mb-5">
         <label for="img" class="block text-base font-medium leading-6 text-gray-900 mb-3">Hình</label>
         <input id="img" name="img" type="file" class="block w-full outline-none indent-3 rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6">
         <div class="error-message text-red-500 text-sm ml-1 mt-1"></div>
     </div>
 
-    </div>
     <div class="img-preview">
         <span class="block text-base font-medium leading-6 text-gray-900 mb-3">Ảnh hiện tại</span>
         <img src="../../Img/no_image.jpg" id="img-preview" class="w-60">

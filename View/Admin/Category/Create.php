@@ -16,7 +16,7 @@
 </section>
 
 
-<form id="addCategory" action="index.php?act=add_category" method="post" class="mx-auto p-10 bg-white shadow-xl rounded-xl">
+<form id="addCategory" action="index.php?act=add_category" method="post" enctype="multipart/form-data" class="mx-auto p-10 bg-white shadow-xl rounded-xl">
 
     <div class="form-group mb-5">
         <label for="danh_muc_id" class="block text-base font-medium leading-6 text-gray-900 mb-3">ID danh mục</label>
@@ -27,6 +27,17 @@
         <label for="ten_danh_muc" class="block text-base font-medium leading-6 text-gray-900 mb-3">Tên danh mục</label>
         <input id="ten_danh_muc" name="ten_danh_muc" type="text" placeholder="Nhập tên danh mục...." class="block w-full outline-none indent-3 rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6">
         <div class="error-message text-red-500 text-sm ml-1 mt-1"></div>
+    </div>
+
+    <div class="form-group mb-5">
+        <label for="hinh" class="block text-base font-medium leading-6 text-gray-900 mb-3">Hình</label>
+        <input id="hinh" name="hinh" type="file" class="block w-full outline-none indent-3 rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6">
+        <div class="error-message text-red-500 text-sm ml-1 mt-1"></div>
+    </div>
+
+    <div class="img-preview mb-5">
+        <span class="block text-base font-medium leading-6 text-gray-900 mb-3">Ảnh hiện tại</span>
+        <img src="../../Img/no_image.jpg" id="img-preview" class="w-20">
     </div>
 
     <div class="form-group flex items-center gap-x-6">
@@ -44,15 +55,26 @@ if (isset($_SESSION['success_message'])) {
 
 <script>
     $(document).ready(function() {
+        $.validator.addMethod("imageExtension", function(value, element) {
+            return this.optional(element) || /\.(jpg|jpeg|png|gif|webp)$/i.test(value);
+        }, "Vui lòng chọn tệp ảnh có phần mở rộng là jpg, jpeg, png, gif hoặc webp.");
+
         $("#addCategory").validate({
             rules: {
                 ten_danh_muc: {
                     required: true,
                 },
+                hinh: {
+                    required: true,
+                    imageExtension: true
+                },
             },
             messages: {
                 ten_danh_muc: {
                     required: "Vui lòng nhập tên danh mục !",
+                },
+                hinh: {
+                    required: "Vui lòng chọn hình !",
                 },
             },
             errorPlacement: function(error, element) {
@@ -60,9 +82,11 @@ if (isset($_SESSION['success_message'])) {
             },
             highlight: function(element) {
                 $(element).closest(".form-group").find("#ten_danh_muc").addClass(" border border-red-500");
+                $(element).closest(".form-group").find("#hinh").addClass(" border border-red-500");
             },
             unhighlight: function(element) {
                 $(element).closest(".form-group").find("#ten_danh_muc").removeClass(" border border-red-500");
+                $(element).closest(".form-group").find("#hinh").removeClass(" border border-red-500");
             },
             submitHandler: function(form) {
                 if (this.checkForm()) {
@@ -71,6 +95,29 @@ if (isset($_SESSION['success_message'])) {
                     $(form).find(":input.error:first").focus();
                 }
                 return false;
+            }
+        });
+
+        const ImgPreviewElement = $('#img-preview');
+        const InputFileElement = $('#hinh');
+
+        InputFileElement.change(function() {
+            const file = this.files[0];
+            if (file) {
+                const extension = file.name.split('.').pop().toLowerCase();
+                if (['jpg', 'jpeg', 'png', 'gif', "webp"].includes(extension)) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        ImgPreviewElement.attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    ImgPreviewElement.attr('src', '../../Img/no_image.jpg');
+                }
+            } else {
+                ImgPreviewElement.attr('src', '../../Img/no_image.jpg');
             }
         });
     });

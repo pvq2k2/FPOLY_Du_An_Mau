@@ -67,7 +67,7 @@
                                         </td>
                                         <td class="px-4 py-4 text-base text-gray-500 dark:text-gray-300 whitespace-nowrap text-center"><?= $ten_danh_muc ?></td>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <img src="<?= $hinhPath ?>" class="w-60 mx-auto rounded-xl">
+                                            <img src="<?= $hinhPath ?>" class="w-20 mx-auto rounded-xl">
                                         </td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             <div class="flex items-center justify-center gap-x-6">

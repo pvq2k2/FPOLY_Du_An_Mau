@@ -41,7 +41,6 @@ if (is_array($Slides)) {
         <div class="error-message text-red-500 text-sm ml-1 mt-1"></div>
     </div>
 
-    </div>
     <div class="img-preview">
         <span class="block text-base font-medium leading-6 text-gray-900 mb-3">Ảnh hiện tại</span>
         <img src="../../Img/no_image.jpg" id="img-preview" class="w-60">

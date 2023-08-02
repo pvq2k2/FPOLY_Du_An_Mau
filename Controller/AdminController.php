@@ -29,8 +29,16 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'add_category':
             if (isset($_POST['btn_add_category']) && ($_POST['btn_add_category'])) {
                 $ten_danh_muc = $_POST['ten_danh_muc'];
-                CreateCategory($ten_danh_muc);
-                $_SESSION['success_message'] = 'Thêm danh mục thành công!';
+                $hinh = $_FILES['hinh'];
+                $UPLOAD_DIR = '../../Upload/Category/';
+                $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+
+                if ($isUploadFile[1]) {
+                    CreateCategory($ten_danh_muc, $isUploadFile[2]);
+                    $_SESSION['success_message'] = 'Thêm danh mục thành công!';
+                } else {
+                    $_SESSION['error_message'] = $isUploadFile[0];
+                }
             }
             include "../../View/Admin/Category/Create.php";
             break;
@@ -44,10 +52,25 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'update_category':
             if (isset($_POST['btn_update_category']) && ($_POST['btn_update_category'])) {
-                $ten_danh_muc = $_POST['ten_danh_muc'];
                 $danh_muc_id = $_POST['danh_muc_id'];
-                UpdateCategory($danh_muc_id, $ten_danh_muc);
-                $_SESSION['success_message'] = 'Cập nhật danh mục thành công!';
+                $ten_danh_muc = $_POST['ten_danh_muc'];
+
+                $hinh = $_FILES['hinh'];
+
+                if ($hinh['name'] == '') {
+                    $Category = GetOneProduct($danh_muc_id);
+                    UpdateCategory($danh_muc_id, $ten_danh_muc, $Category['hinh']);
+                    $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
+                } else {
+                    $UPLOAD_DIR = '../../Upload/Category/';
+                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                    if ($isUploadFile[1]) {
+                        UpdateCategory($danh_muc_id, $ten_danh_muc, $isUploadFile[2]);
+                        $_SESSION['success_message'] = 'Cập nhật danh mục thành công!';
+                    } else {
+                        $_SESSION['error_message'] = $isUploadFile[0];
+                    }
+                }
             }
             $ListCategory = GetAllCategory();
             include "../../View/Admin/Category/List.php";
