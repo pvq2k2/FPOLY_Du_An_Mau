@@ -54,18 +54,16 @@
                                     if (!is_file($hinhPath)) {
                                         $hinhPath = "No Photo";
                                     }
-
-
                             ?>
                                     <tr>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap text-center">
                                             <span><?= $slides_id ?></span>
                                         </td>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                            <img src="<?= $hinhPath ?>" class="w-16 mx-auto">
+                                            <img src="<?= $hinhPath ?>" class="w-60 mx-auto rounded-xl">
                                         </td>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap text-center">
-                                            <span><?php echo $trang_thai == 1 ? "Mở" : "Tắt" ?></span>
+                                            <span class="text-white py-2 px-4 rounded-3xl<?php echo $trang_thai == 1 ? " bg-green-500" : " bg-red-500" ?>"><?php echo $trang_thai == 1 ? "Hoạt động" : "Không hoạt động" ?></span>
                                         </td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             <div class="flex items-center justify-center gap-x-6">

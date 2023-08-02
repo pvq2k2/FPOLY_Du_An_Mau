@@ -1,7 +1,7 @@
 <?php
-function CreateSlides($ten_danh_muc)
+function CreateSlides($san_pham_id, $img, $trang_thai)
 {
-    $sql = "INSERT INTO danh_muc(ten_danh_muc) VALUES('$ten_danh_muc')";
+    $sql = "INSERT INTO slides(san_pham_id, img, trang_thai) VALUES('$san_pham_id', '$img', '$trang_thai')";
     pdo_execute($sql);
 }
 
