@@ -100,8 +100,8 @@ if (isset($_SESSION['error_message'])) {
 <script>
     $(document).ready(function() {
         $.validator.addMethod("imageExtension", function(value, element) {
-            return this.optional(element) || /\.(jpg|jpeg|png|gif)$/i.test(value);
-        }, "Vui lòng chọn tệp ảnh có phần mở rộng là jpg, jpeg, png hoặc gif.");
+            return this.optional(element) || /\.(jpg|jpeg|png|gif|webp)$/i.test(value);
+        }, "Vui lòng chọn tệp ảnh có phần mở rộng là jpg, jpeg, png, gif hoặc webp.");
 
         $("#addProduct").validate({
             rules: {
@@ -110,6 +110,8 @@ if (isset($_SESSION['error_message'])) {
                 },
                 gia: {
                     required: true,
+                    number: true,
+                    digits: true
                 },
                 hinh: {
                     required: true,
@@ -131,6 +133,8 @@ if (isset($_SESSION['error_message'])) {
                 },
                 gia: {
                     required: "Vui lòng nhập giá !",
+                    number: "Vui lòng nhập vào là số!",
+                    digits: "Vui lòng nhập số nguyên dương!"
                 },
                 hinh: {
                     required: "Vui lòng chọn hình !",
@@ -181,7 +185,7 @@ if (isset($_SESSION['error_message'])) {
             const file = this.files[0];
             if (file) {
                 const extension = file.name.split('.').pop().toLowerCase();
-                if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                if (['jpg', 'jpeg', 'png', 'gif', "webp"].includes(extension)) {
                     const reader = new FileReader();
 
                     reader.onload = function(e) {

@@ -143,8 +143,8 @@ if (isset($_SESSION['error_message'])) {
 <script>
     $(document).ready(function() {
         $.validator.addMethod("imageExtension", function(value, element) {
-            return this.optional(element) || /\.(jpg|jpeg|png|gif)$/i.test(value);
-        }, "Vui lòng chọn tệp ảnh có phần mở rộng là jpg, jpeg, png hoặc gif !");
+            return this.optional(element) || /\.(jpg|jpeg|png|gif|webp)$/i.test(value);
+        }, "Vui lòng chọn tệp ảnh có phần mở rộng là jpg, jpeg, png, gif hoặc webp.");
 
         $.validator.addMethod("regexEmail", function(value, element) {
             var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -172,6 +172,8 @@ if (isset($_SESSION['error_message'])) {
                 },
                 so_dien_thoai: {
                     required: true,
+                    number: true,
+                    digits: true,
                     regexPhoneNumber: true
                 },
                 hinh: {
@@ -201,6 +203,8 @@ if (isset($_SESSION['error_message'])) {
                 },
                 so_dien_thoai: {
                     required: "Vui lòng nhập số điện thoại !",
+                    number: "Vui lòng nhập số !",
+                    digits: "Vui lòng nhập số nguyên dương !"
                 },
                 hinh: {
                     required: "Vui lòng chọn hình !",
@@ -262,7 +266,7 @@ if (isset($_SESSION['error_message'])) {
             const file = this.files[0];
             if (file) {
                 const extension = file.name.split('.').pop().toLowerCase();
-                if (['jpg', 'jpeg', 'png', 'gif'].includes(extension)) {
+                if (['jpg', 'jpeg', 'png', 'gif', "webp"].includes(extension)) {
                     const reader = new FileReader();
 
                     reader.onload = function(e) {
