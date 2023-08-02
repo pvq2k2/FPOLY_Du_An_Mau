@@ -88,7 +88,7 @@ if (is_array($Product)) {
 
     <div class="form-group flex items-center gap-x-6">
         <input type="hidden" name="san_pham_id" value="<?= $san_pham_id ?>">
-        <input type="submit" name="btn_update_product" value="Thêm mới" class="shadow-xl rounded-md bg-indigo-500 px-5 py-2 text-base font-semibold text-white hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-150 ease-out hover:ease-in">
+        <input type="submit" name="btn_update_product" value="Cập nhật" class="shadow-xl rounded-md bg-indigo-500 px-5 py-2 text-base font-semibold text-white hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition duration-150 ease-out hover:ease-in">
         <a href="index.php?act=list_product" class="border px-5 py-2 shadow-xl rounded-md text-base font-semibold leading-6 text-gray-900 hover:border-indigo-500 transition duration-150 ease-out hover:ease-in">Trở lại</a>
     </div>
 </form>
@@ -106,6 +106,9 @@ if (is_array($Product)) {
                 },
                 gia: {
                     required: true,
+                },
+                hinh: {
+                    imageExtension: true
                 },
                 ngay_nhap: {
                     required: true,
@@ -169,8 +172,6 @@ if (is_array($Product)) {
         const ImgPreviewElement = $('#img-preview');
         const InputFileElement = $('#hinh');
         const ExistingHinhValue = <?= json_encode($hinh) ?>;
-
-        // Thiết lập ảnh xem trước ban đầu
         ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/Product/${ExistingHinhValue}` : '../../Img/no_image.jpg');
 
         InputFileElement.change(function() {
@@ -183,27 +184,12 @@ if (is_array($Product)) {
                     reader.onload = function(e) {
                         ImgPreviewElement.attr('src', e.target.result);
                     };
-
                     reader.readAsDataURL(file);
-
-
-                    // Thêm quy tắc kiểm tra cho input hinh khi người dùng chọn hình mới
-                    updateProductForm.settings.rules.hinh = {
-                        required: true,
-                        imageExtension: true
-                    };
-
                 } else {
-                    // Nếu người dùng chọn tệp không phải là ảnh, reset input và hiển thị ảnh mặc định
                     ImgPreviewElement.attr('src', '../../Img/no_image.jpg');
-                    // Xóa quy tắc kiểm tra cho input hinh khi người dùng chọn tệp không phải là ảnh
-                    delete updateProductForm.settings.rules.hinh;
                 }
             } else {
-                // Nếu không có tệp được chọn, hiển thị ảnh mặc định
                 ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/Product/${ExistingHinhValue}` : '../../Img/no_image.jpg');
-                // Xóa quy tắc kiểm tra cho input hinh khi không có tệp mới được chọn
-                delete updateProductForm.settings.rules.hinh;
             }
         });
     });

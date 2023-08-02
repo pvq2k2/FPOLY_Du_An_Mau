@@ -11,15 +11,15 @@ function GetAllSlides()
     return pdo_query($sql);
 }
 
-function GetOneSlides($danh_muc_id)
+function GetOneSlides($slides_id)
 {
-    $sql = "SELECT * FROM danh_muc WHERE danh_muc_id=" . $danh_muc_id;
+    $sql = "SELECT * FROM slides WHERE slides_id=" . $slides_id;
     return pdo_query_one($sql);
 }
 
-function UpdateSlides($danh_muc_id, $ten_danh_muc)
+function UpdateSlides($slides_id, $san_pham_id, $img, $trang_thai)
 {
-    $sql = "UPDATE danh_muc SET ten_danh_muc = '$ten_danh_muc' WHERE danh_muc_id=" . $danh_muc_id;
+    $sql = "UPDATE slides SET san_pham_id = '$san_pham_id', img = '$img', trang_thai = '$trang_thai' WHERE slides_id=" . $slides_id;
     pdo_execute($sql);
 }
 

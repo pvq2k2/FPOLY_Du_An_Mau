@@ -123,7 +123,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $hinh = $_FILES['hinh'];
 
                 if ($hinh['name'] == '') {
-                    UpdateProduct($san_pham_id, $ten_san_pham, $gia, $hinh['name'], $ngay_nhap, $mo_ta, $danh_muc_id);
+                    $Product = GetOneProduct($san_pham_id);
+                    UpdateProduct($san_pham_id, $ten_san_pham, $gia, $Product['hinh'], $ngay_nhap, $mo_ta, $danh_muc_id);
                     $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
                 } else {
                     $UPLOAD_DIR = '../../Upload/Product/';
@@ -132,7 +133,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         UpdateProduct($san_pham_id, $ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
                         $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
                     } else {
-                        echo $isUploadFile[0];
+                        $_SESSION['error_message'] = $isUploadFile[0];
                     }
                 }
             }
@@ -183,47 +184,47 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "../../View/Admin/Slides/Create.php";
             break;
 
-        case 'get_update_product':
+        case 'get_update_slides':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $Product = GetOneProduct($_GET['id']);
+                $Slides = GetOneSlides($_GET['id']);
             }
-            $ListCategory = GetAllCategory();
-            include "../../View/Admin/Product/Update.php";
+            include "../../View/Admin/Slides/Update.php";
             break;
 
-        case 'update_product':
-            if (isset($_POST['btn_update_product']) && ($_POST['btn_update_product'])) {
+        case 'update_slides':
+            if (isset($_POST['btn_update_slides']) && ($_POST['btn_update_slides'])) {
+                $slides_id = $_POST['slides_id'];
                 $san_pham_id = $_POST['san_pham_id'];
-                $ten_san_pham = $_POST['ten_san_pham'];
-                $gia = $_POST['gia'];
-                $ngay_nhap = $_POST['ngay_nhap'];
-                $mo_ta = $_POST['mo_ta'];
-                $danh_muc_id = $_POST['danh_muc_id'];
-
-                $hinh = $_FILES['hinh'];
-
-                if ($hinh['name'] == '') {
-                    UpdateProduct($san_pham_id, $ten_san_pham, $gia, $hinh['name'], $ngay_nhap, $mo_ta, $danh_muc_id);
-                    $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
+                $Product = GetOneProduct($san_pham_id);
+                if (!$Product) {
+                    $_SESSION['error_message'] = "Sản phẩm có ID '" . $san_pham_id . "' không tồn tại";
                 } else {
-                    $UPLOAD_DIR = '../../Upload/Product/';
-                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
-                    if ($isUploadFile[1]) {
-                        UpdateProduct($san_pham_id, $ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
-                        $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
+                    $trang_thai = $_POST['trang_thai'];
+                    $hinh = $_FILES['img'];
+                    if ($hinh['name'] == '') {
+                        $Slides = GetOneSlides($slides_id);
+                        UpdateSlides($slides_id, $san_pham_id, $Slides['img'], $trang_thai);
+                        $_SESSION['success_message'] = 'Cập nhật thành công!';
                     } else {
-                        echo $isUploadFile[0];
+                        $UPLOAD_DIR = '../../Upload/Slides/';
+                        $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                        if ($isUploadFile[1]) {
+                            UpdateSlides($slides_id, $san_pham_id, $isUploadFile[2], $trang_thai);
+                            $_SESSION['success_message'] = 'Cập nhật thành công!';
+                        } else {
+                            $_SESSION['error_message'] = $isUploadFile[0];
+                        }
                     }
                 }
             }
-            $ListProduct = GetAllProduct('', 0);
-            include "../../View/Admin/Product/List.php";
+            $ListSlides = GetAllSlides();
+            include "../../View/Admin/Slides/List.php";
             break;
 
         case 'remove_slides':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveSlides($_GET['id']);
-                $_SESSION['success_message'] = 'Xóa ảnh trình chiếu thành công!';
+                $_SESSION['success_message'] = 'Xóa thành công!';
                 echo 'success';
                 exit();
             } else {
@@ -311,6 +312,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $hinh = $_FILES['hinh'];
 
                 if ($hinh['name'] == '') {
+                    $User = GetOneUser($tai_khoan_id);
                     UpdateUser(
                         $tai_khoan_id,
                         $ho_va_ten,
@@ -319,7 +321,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $dia_chi,
                         $so_dien_thoai,
                         $gioi_tinh,
-                        $hinh['name'],
+                        $User['hinh'],
                         $vai_tro
                     );
                     $_SESSION['success_message'] = "Cập nhật tài khoản thành công";
@@ -340,7 +342,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         );
                         $_SESSION['success_message'] = 'Cập nhật tài khoản thành công!';
                     } else {
-                        echo $isUploadFile[0];
+                        $_SESSION['error_message'] = $isUploadFile[0];
                     }
                 }
             }

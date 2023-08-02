@@ -154,6 +154,9 @@ if (isset($_SESSION['error_message'])) {
                     required: true,
                     regexEmail: true
                 },
+                hinh: {
+                    imageExtension: true
+                },
                 so_dien_thoai: {
                     required: true,
                     regexPhoneNumber: true
@@ -224,8 +227,6 @@ if (isset($_SESSION['error_message'])) {
         const ImgPreviewElement = $('#img-preview');
         const InputFileElement = $('#hinh');
         const ExistingHinhValue = <?= json_encode($hinh) ?>;
-
-        // Thiết lập ảnh xem trước ban đầu
         ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/User/${ExistingHinhValue}` : '../../Img/no_image.jpg');
 
         InputFileElement.change(function() {
@@ -238,27 +239,12 @@ if (isset($_SESSION['error_message'])) {
                     reader.onload = function(e) {
                         ImgPreviewElement.attr('src', e.target.result);
                     };
-
                     reader.readAsDataURL(file);
-
-
-                    // Thêm quy tắc kiểm tra cho input hinh khi người dùng chọn hình mới
-                    updateProductForm.settings.rules.hinh = {
-                        required: true,
-                        imageExtension: true
-                    };
-
                 } else {
-                    // Nếu người dùng chọn tệp không phải là ảnh, reset input và hiển thị ảnh mặc định
                     ImgPreviewElement.attr('src', '../../Img/no_image.jpg');
-                    // Xóa quy tắc kiểm tra cho input hinh khi người dùng chọn tệp không phải là ảnh
-                    delete updateProductForm.settings.rules.hinh;
                 }
             } else {
-                // Nếu không có tệp được chọn, hiển thị ảnh mặc định
-                ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/Product/${ExistingHinhValue}` : '../../Img/no_image.jpg');
-                // Xóa quy tắc kiểm tra cho input hinh khi không có tệp mới được chọn
-                delete updateProductForm.settings.rules.hinh;
+                ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/User/${ExistingHinhValue}` : '../../Img/no_image.jpg');
             }
         });
 
