@@ -3,7 +3,8 @@ USE van_quyet_mobile;
 
 CREATE TABLE danh_muc (
 	danh_muc_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-	ten_danh_muc VARCHAR(50) NOT NULL
+	ten_danh_muc VARCHAR(50) NOT NULL,
+  hinh VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE slides (

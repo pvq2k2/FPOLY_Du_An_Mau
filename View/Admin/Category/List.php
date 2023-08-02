@@ -39,6 +39,10 @@
                                 </th>
 
                                 <th class="px-4 py-3.5 text-sm font-normal rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Hình
+                                </th>
+
+                                <th class="px-4 py-3.5 text-sm font-normal rtl:text-right text-gray-500 dark:text-gray-400">
                                     Hành động
                                 </th>
                             </tr>
@@ -52,12 +56,19 @@
                                     extract($Category);
                                     $URLGetUpdateCategory = "index.php?act=get_update_category&id=" . $danh_muc_id;
                                     $URLRemoveCategory = "index.php?act=remove_category&id=" . $danh_muc_id;
+                                    $hinhPath = "../../Upload/Category/" . $hinh;
+                                    if (!is_file($hinhPath)) {
+                                        $hinhPath = "No Photo";
+                                    }
                             ?>
                                     <tr>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap text-center">
                                             <span><?= $danh_muc_id ?></span>
                                         </td>
                                         <td class="px-4 py-4 text-base text-gray-500 dark:text-gray-300 whitespace-nowrap text-center"><?= $ten_danh_muc ?></td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                            <img src="<?= $hinhPath ?>" class="w-60 mx-auto rounded-xl">
+                                        </td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             <div class="flex items-center justify-center gap-x-6">
                                                 <a href="<?= $URLGetUpdateCategory ?>">
