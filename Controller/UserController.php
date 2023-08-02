@@ -2,6 +2,7 @@
 include "Models/pdo.php";
 include "Models/Category.php";
 include "Models/Product.php";
+include "Models/Slides.php";
 include "Models/User.php";
 include "Models/Cart.php";
 include "Models/Order.php";
@@ -9,6 +10,7 @@ include "Models/Comment.php";
 include "Models/OrderDetail.php";
 include "Helper/FormatHelper.php";
 include "Global.php";
+$ListSlides = GetAllSlidesActive();
 $ListNewProduct = GetLimitProduct();
 $ListCategory = GetAllCategory();
 $ListTop10Product = GetTop10Product();

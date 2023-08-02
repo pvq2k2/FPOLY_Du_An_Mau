@@ -11,6 +11,12 @@ function GetAllSlides()
     return pdo_query($sql);
 }
 
+function GetAllSlidesActive()
+{
+    $sql = "SELECT * FROM slides WHERE trang_thai = 1 ORDER BY slides_id DESC";
+    return pdo_query($sql);
+}
+
 function GetOneSlides($slides_id)
 {
     $sql = "SELECT * FROM slides WHERE slides_id=" . $slides_id;

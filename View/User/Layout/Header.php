@@ -30,6 +30,11 @@ include_once "Global.php";
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -57,7 +62,7 @@ include_once "Global.php";
         </div>
     </div>
 
-    <div class="header-main mb-3 mt-5 sticky top-0 transition-all duration-300 ease-in-out">
+    <div class="header-main py-3 sticky top-0 transition-all duration-300 ease-in-out z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="logo w-64">
                 <a href="<?= $ROOT_URL ?>index.php">
@@ -133,10 +138,13 @@ include_once "Global.php";
             });
             $(window).scroll(function() {
                 if ($(this).scrollTop()) {
-                    $('.header-main').addClass(' bg-white shadow-xl');
+                    $('.header-main').addClass(' bg-gray-50 shadow-xl');
                 } else {
-                    $('.header-main').removeClass(' bg-white shadow-xl');
+                    $('.header-main').removeClass(' bg-gray-50 shadow-xl');
                 }
             });
         });
     </script>
+
+    <main class="mt-5">
+        <div class="container mx-auto">
