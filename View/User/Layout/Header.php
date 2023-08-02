@@ -38,7 +38,7 @@ include_once "Global.php";
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="m-0 bg-gray-50 text-slate-500">
+<body class="m-0 bg-[#f4f4f4] text-slate-500">
     <div class="header-top bg-[#0f4670]">
         <div class="container mx-auto">
             <ul class="flex justify-end gap-x-10 text-white">
@@ -62,7 +62,7 @@ include_once "Global.php";
         </div>
     </div>
 
-    <div class="header-main py-3 sticky top-0 transition-all duration-300 ease-in-out z-50">
+    <div class="header-main py-3 sticky top-0 backdrop-saturate-[200%] backdrop-blur-[30px] transition-all duration-300 ease-in-out z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="logo w-64">
                 <a href="<?= $ROOT_URL ?>index.php">
@@ -138,9 +138,9 @@ include_once "Global.php";
             });
             $(window).scroll(function() {
                 if ($(this).scrollTop()) {
-                    $('.header-main').addClass(' bg-gray-50 shadow-xl');
+                    $('.header-main').addClass(' bg-[hsla(0,0%,100%,0.8)] shadow-xl');
                 } else {
-                    $('.header-main').removeClass(' bg-gray-50 shadow-xl');
+                    $('.header-main').removeClass(' bg-[hsla(0,0%,100%,0.8)] shadow-xl');
                 }
             });
         });

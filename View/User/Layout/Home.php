@@ -15,9 +15,22 @@
             }
         }
         ?>
-
     </div>
 </div>
+
+<div class="category py-10">
+    <?php
+    foreach ($ListCategory as $Category) {
+        extract($Category);
+        $LinkCategory = "index.php?act=product&category_id=" . $danh_muc_id;
+        $hinhPath = $IMG_PATH . "Category/" . $hinh;
+    ?>
+        <div class="w-[120px] h-[50px] bg-white mx-5 overflow-hidden flex justify-center items-center rounded shadow-xl border border-inherit">
+            <a href="<?= $LinkCategory ?>" title="<?= $ten_danh_muc ?>">
+                <img src="<?= $hinhPath ?>" alt="<?= $ten_danh_muc ?>" class="max-w-[120px] max-h-[70px] my-[-10px] mx-auto">
+            </a>
+        </div>
+    <?php } ?>
 </div>
 
 
@@ -36,15 +49,7 @@
     ?>
 </div>
 
-<div class="list_danh_muc">
-    <?php
-    foreach ($ListCategory as $Category) {
-        extract($Category);
-        $LinkCategory = "index.php?act=product&category_id=" . $danh_muc_id;
-        echo '<a href="' . $LinkCategory . '" style="display: inline-block; margin: 20px;">' . $ten_danh_muc . '</a>';
-    }
-    ?>
-</div>
+
 
 <div class="san_pham_top_10">
     <?php
@@ -64,6 +69,21 @@
 
 </div>
 </main>
+
+
+<style>
+    .slick-dots {
+        bottom: -50px;
+    }
+
+    .category .slick-list.draggable {
+        padding: 20px 0;
+    }
+
+    .category .slick-prev.slick-arrow {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+</style>
 
 <script>
     $(document).ready(function() {
@@ -94,6 +114,26 @@
                     arrow: false,
                 },
             }, ],
+        });
+
+        $('.category').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1000,
+            arrows: true,
+            prevArrow: `<button type='button' class='slick-prev-news slick-arrow 
+              absolute top-16 -left-11 border-none w-[40px] h-[40px] 
+              justify-center items-center rounded-full 
+              z-10 transition-all duration-300 ease-linear 
+              bg-white xl:group-hover:opacity-100 hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:text-white' style="display: flex;">
+              <ion-icon name="chevron-back-outline" class="text-2xl"></ion-icon></button>`,
+            nextArrow: `<button type='button' class='slick-next-news slick-arrow
+              absolute top-16 -right-12 border-none w-[40px] h-[40px] 
+              justify-center items-center rounded-full 
+              z-10 transition-all duration-300 ease-linear 
+              bg-white xl:group-hover:opacity-100 hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:text-white' style="display: flex;">
+              <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon></button>`,
         });
     });
 </script>
