@@ -1,6 +1,7 @@
 <?php
 include "../../Models/pdo.php";
 include "../../Models/Category.php";
+include "../../Models/Slides.php";
 include "../../Models/Product.php";
 include "../../Models/User.php";
 include "../../Models/Comment.php";
@@ -150,7 +151,88 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 exit();
             }
             break;
+
             // End Product
+
+            // Slides
+        case 'list_slides':
+            $ListSlides = GetAllSlides();
+            include "../../View/Admin/Slides/List.php";
+            break;
+
+        case 'add_product':
+            if (isset($_POST['btn_add_product']) && ($_POST['btn_add_product'])) {
+                $ten_san_pham = $_POST['ten_san_pham'];
+                $gia = $_POST['gia'];
+
+                $hinh = $_FILES['hinh'];
+                $UPLOAD_DIR = '../../Upload/Product/';
+                $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+
+                $ngay_nhap = $_POST['ngay_nhap'];
+                $mo_ta = $_POST['mo_ta'];
+                $danh_muc_id = $_POST['danh_muc_id'];
+                if ($isUploadFile[1]) {
+                    CreateProduct($ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
+                    $_SESSION['success_message'] = "Thêm sản phẩm thành công";
+                } else {
+                    $_SESSION['error_message'] = $isUploadFile[0];
+                }
+            }
+            $ListCategory = GetAllCategory();
+            include "../../View/Admin/Product/Create.php";
+            break;
+
+        case 'get_update_product':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $Product = GetOneProduct($_GET['id']);
+            }
+            $ListCategory = GetAllCategory();
+            include "../../View/Admin/Product/Update.php";
+            break;
+
+        case 'update_product':
+            if (isset($_POST['btn_update_product']) && ($_POST['btn_update_product'])) {
+                $san_pham_id = $_POST['san_pham_id'];
+                $ten_san_pham = $_POST['ten_san_pham'];
+                $gia = $_POST['gia'];
+                $ngay_nhap = $_POST['ngay_nhap'];
+                $mo_ta = $_POST['mo_ta'];
+                $danh_muc_id = $_POST['danh_muc_id'];
+
+                $hinh = $_FILES['hinh'];
+
+                if ($hinh['name'] == '') {
+                    UpdateProduct($san_pham_id, $ten_san_pham, $gia, $hinh['name'], $ngay_nhap, $mo_ta, $danh_muc_id);
+                    $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
+                } else {
+                    $UPLOAD_DIR = '../../Upload/Product/';
+                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                    if ($isUploadFile[1]) {
+                        UpdateProduct($san_pham_id, $ten_san_pham, $gia, $isUploadFile[2], $ngay_nhap, $mo_ta, $danh_muc_id);
+                        $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
+                    } else {
+                        echo $isUploadFile[0];
+                    }
+                }
+            }
+            $ListProduct = GetAllProduct('', 0);
+            include "../../View/Admin/Product/List.php";
+            break;
+
+        case 'remove_slides':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                RemoveSlides($_GET['id']);
+                $_SESSION['success_message'] = 'Xóa ảnh trình chiếu thành công!';
+                echo 'success';
+                exit();
+            } else {
+                echo 'error';
+                exit();
+            }
+            break;
+
+            // End Slides
 
             // User
         case 'list_user':

@@ -36,6 +36,7 @@ session_start();
 <?php
 $act = $_GET['act'];
 $isActiveCategory = $act == "list_category" || $act == "add_category" || $act == "get_update_category" || $act == "update_category" || $act == "remove_category";
+$isActiveSlides = $act == "list_slides" || $act == "add_slides" || $act == "get_update_slides" || $act == "update_slides" || $act == "remove_slides";
 $isActiveProduct = $act == "list_product" || $act == "add_product" || $act == "get_update_product" || $act == "update_product" || $act == "remove_product";
 $isActiveUser = $act == "list_user" || $act == "add_user" || $act == "get_update_user" || $act == "update_user" || $act == "remove_user";
 $isActiveComment = $act == "list_product_comment" || $act == "detail_product_comment" || $act == "get_update_comment" || $act == "update_comment" || $act == "remove_comment";
@@ -73,6 +74,17 @@ $isActiveOrder = $act == "list_order" || $act == "order_detail" || $act == "get_
                 </svg>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Danh mục</span>
+            </a>
+          </li>
+
+
+          <li class="mt-0.5 w-full group">
+            <a class="<?php echo ($isActiveSlides ? "bg-white font-semibold shadow-lg rounded-lg text-slate-700 " : ""); ?>py-2 text-base mt-3 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="index.php?act=list_slides">
+              <div class="<?php echo ($isActiveSlides ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>shadow-xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center">
+                <ion-icon name="images-outline"></ion-icon>
+                </svg>
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Ảnh trình chiếu</span>
             </a>
           </li>
 

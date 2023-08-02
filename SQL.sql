@@ -6,6 +6,14 @@ CREATE TABLE danh_muc (
 	ten_danh_muc VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE slides (
+    slides_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    img VARCHAR(255) NOT NULL,
+    trang_thai TINYINT(1) DEFAULT 1,
+    san_pham_id INT(11) NOT NULL,
+    FOREIGN KEY (san_pham_id) REFERENCES san_pham(san_pham_id)
+)
+
 CREATE TABLE san_pham (
   san_pham_id INT(11) AUTO_INCREMENT PRIMARY KEY,
   ten_san_pham VARCHAR(50) NOT NULL,
