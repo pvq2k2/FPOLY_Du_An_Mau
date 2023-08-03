@@ -105,7 +105,6 @@ include_once "Global.php";
                                             </div>
                                         </div>
                                         <a href="index.php?act=my_order" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Đơn hàng của tôi</a>
-                                        <a href="index.php?act=forgot_password" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Quên mật khẩu</a>
                                         <?php if ($vai_tro == 1) { ?>
                                             <a href="view/admin/index.php?act=dashboard" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Trang quản trị</a>
                                         <?php } ?>

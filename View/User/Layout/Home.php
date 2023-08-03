@@ -93,6 +93,13 @@
     }
 </style>
 
+<?php
+if (isset($_SESSION['success_message'])) {
+    echo '<script>toastr.success("' . $_SESSION['success_message'] . '")</script>';
+    unset($_SESSION['success_message']);
+}
+?>
+
 <script>
     $(document).ready(function() {
         $(".slider").slick({

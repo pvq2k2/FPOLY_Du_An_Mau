@@ -20,7 +20,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
     switch ($act) {
         case 'logout':
             session_unset();
-            header('Location: ' . $ROOT_URL . 'index.php?act=login');
+            echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=login"; </script>';
+            // header('Location: ' . $ROOT_URL . 'index.php?act=login');
             break;
         case 'forgot_password':
             if (isset($_POST['btn_forgot_password']) && ($_POST['btn_forgot_password'])) {
@@ -59,10 +60,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $isLogin = Login($email, $mat_khau);
                 if (is_array($isLogin)) {
                     $_SESSION['user'] = $isLogin;
-                    $msg = "Đăng nhập thành công";
-                    header('Location: index.php');
+                    $_SESSION['success_message'] = "Đăng nhập thành công!";
+                    echo '<script> window.location.href = "' . $ROOT_URL . 'index.php"; </script>';
+                    // header('Location: index.php');
                 } else {
-                    $msg = "Tài khoản hoặc mật khẩu không chính xác!";
+                    $_SESSION['error_message'] = "Tài khoản hoặc mật khẩu không chính xác!";
                 }
             }
             include "View/User/Account/Login.php";
