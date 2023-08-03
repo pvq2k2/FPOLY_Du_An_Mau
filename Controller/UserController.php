@@ -29,7 +29,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 if (is_array($isEmail)) {
                     $msg = "Mật khẩu của bạn là: " . $isEmail['mat_khau'];
                 } else {
-                    $msg = "Email không tồn tại!";
+                    $_SESSION['error_message'] = "Email không tồn tại!";
                 }
             }
             include "View/User/Account/ForgotPassword.php";

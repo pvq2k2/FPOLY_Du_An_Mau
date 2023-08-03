@@ -42,7 +42,17 @@
                     </li>
 
                     <li id="toggleModalUser" class="relative">
-                        <img class="w-10 h-10 rounded-full" src="https://res.cloudinary.com/assignmentjs/image/upload/v1664199286/nextjsuser/dw1r1yybpmahpl8qwmkb.png" alt="">
+                        <?php
+                        $hinhPath = "../../Upload/User/" . $_SESSION['user']['hinh'];
+                        if (!is_file($hinhPath)) {
+                            if ($_SESSION['user']['gioi_tinh'] == 1) {
+                                $hinhPath = "../../Img/nam.jpg";
+                            } else {
+                                $hinhPath = "../../Img/nu.jpg";
+                            }
+                        }
+                        ?>
+                        <img class="w-10 h-10 rounded-full shadow-xl border border-current" src="<?= $hinhPath ?>">
 
 
                         <div id="boxList" class="absolute top-16 bg-white shadow-xl z-20 p-3 rounded-lg ease-linear duration-300 w-60 xl:left-[-183px] lg:right-[-96px]  group-hover:visible
