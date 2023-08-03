@@ -53,6 +53,13 @@ if (isset($_SESSION['success_message'])) {
 }
 ?>
 
+<?php
+if (isset($_SESSION['error_message'])) {
+    echo '<script>toastr.error("' . $_SESSION['error_message'] . '")</script>';
+    unset($_SESSION['error_message']);
+}
+?>
+
 <script>
     $(document).ready(function() {
         $.validator.addMethod("imageExtension", function(value, element) {

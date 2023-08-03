@@ -21,7 +21,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'logout':
             session_unset();
             echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=login"; </script>';
-            // header('Location: ' . $ROOT_URL . 'index.php?act=login');
             break;
         case 'forgot_password':
             if (isset($_POST['btn_forgot_password']) && ($_POST['btn_forgot_password'])) {
@@ -62,7 +61,6 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $_SESSION['user'] = $isLogin;
                     $_SESSION['success_message'] = "Đăng nhập thành công!";
                     echo '<script> window.location.href = "' . $ROOT_URL . 'index.php"; </script>';
-                    // header('Location: index.php');
                 } else {
                     $_SESSION['error_message'] = "Tài khoản hoặc mật khẩu không chính xác!";
                 }
@@ -74,8 +72,24 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $ho_va_ten = $_POST['ho_va_ten'];
                 $email = $_POST['email'];
                 $mat_khau = $_POST['mat_khau'];
-                Register($ho_va_ten, $email, $mat_khau);
-                $msg = "Đăng ký thành công";
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $dia_chi = $_POST['dia_chi'];
+
+                $gioi_tinh = $_POST['gioi_tinh'];
+                $hinh = $gioi_tinh == 1 ? "nam.jpg" : "nu.jpg";
+
+                $isExistPhoneNumber = GetUserBySoDienThoai($so_dien_thoai);
+                if ($isExistPhoneNumber) {
+                    $_SESSION['error_message'] = "Số điện thoại đã được sử dụng!";
+                } else {
+                    $isExistEmail = GetUserByEmail($email);
+                    if ($isExistEmail) {
+                        $_SESSION['error_message'] = "Email đã được sử dụng!";
+                    } else {
+                        Register($ho_va_ten, $email, $mat_khau, $so_dien_thoai, $dia_chi, $gioi_tinh, $hinh);
+                        $_SESSION['success_message'] = "Đăng ký thành công";
+                    }
+                }
             }
             include "View/User/Account/Register.php";
             break;

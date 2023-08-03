@@ -1,7 +1,30 @@
 <?php
-function Register($ho_va_ten, $email, $mat_khau)
-{
-    $sql = "INSERT INTO tai_khoan(ho_va_ten, email, mat_khau) VALUES('$ho_va_ten', '$email', '$mat_khau')";
+
+function Register(
+    $ho_va_ten,
+    $email,
+    $mat_khau,
+    $so_dien_thoai,
+    $dia_chi,
+    $gioi_tinh,
+    $hinh
+) {
+    $sql = "INSERT INTO tai_khoan(
+        ho_va_ten, 
+        email, 
+        mat_khau, 
+        so_dien_thoai, 
+        dia_chi, 
+        gioi_tinh, 
+        hinh) 
+        VALUES(
+        '$ho_va_ten', 
+        '$email', 
+        '$mat_khau', 
+        '$so_dien_thoai', 
+        '$dia_chi', 
+        '$gioi_tinh', 
+        '$hinh')";
     pdo_execute($sql);
 }
 
@@ -54,6 +77,18 @@ function CreateUser(
 function GetOneUser($tai_khoan_id)
 {
     $sql = "SELECT * FROM tai_khoan WHERE tai_khoan_id=" . $tai_khoan_id;
+    return pdo_query_one($sql);
+}
+
+function GetUserBySoDienThoai($so_dien_thoai)
+{
+    $sql = "SELECT so_dien_thoai FROM tai_khoan WHERE so_dien_thoai=" . $so_dien_thoai;
+    return pdo_query_one($sql);
+}
+
+function GetUserByEmail($email)
+{
+    $sql = "SELECT email FROM tai_khoan WHERE email='$email'";
     return pdo_query_one($sql);
 }
 

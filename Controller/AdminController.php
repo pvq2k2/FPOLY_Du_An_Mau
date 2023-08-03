@@ -291,24 +291,36 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $gioi_tinh = $_POST['gioi_tinh'];
                 $vai_tro = $_POST['vai_tro'];
 
-                $hinh = $_FILES['hinh'];
-                $UPLOAD_DIR = '../../Upload/User/';
-                $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
 
-                if ($isUploadFile[1]) {
-                    CreateUser(
-                        $ho_va_ten,
-                        $email,
-                        $mat_khau,
-                        $dia_chi,
-                        $so_dien_thoai,
-                        $gioi_tinh,
-                        $isUploadFile[2],
-                        $vai_tro
-                    );
-                    $_SESSION['success_message'] = "Thêm tài khoản thành công";
+
+                $isExistPhoneNumber = GetUserBySoDienThoai($so_dien_thoai);
+                if ($isExistPhoneNumber) {
+                    $_SESSION['error_message'] = "Số điện thoại đã được sử dụng!";
                 } else {
-                    $_SESSION['error_message'] = $isUploadFile[0];
+                    $isExistEmail = GetUserByEmail($email);
+                    if ($isExistEmail) {
+                        $_SESSION['error_message'] = "Email đã được sử dụng!";
+                    } else {
+                        $hinh = $_FILES['hinh'];
+                        $UPLOAD_DIR = '../../Upload/User/';
+                        $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+
+                        if ($isUploadFile[1]) {
+                            CreateUser(
+                                $ho_va_ten,
+                                $email,
+                                $mat_khau,
+                                $dia_chi,
+                                $so_dien_thoai,
+                                $gioi_tinh,
+                                $isUploadFile[2],
+                                $vai_tro
+                            );
+                            $_SESSION['success_message'] = "Thêm tài khoản thành công";
+                        } else {
+                            $_SESSION['error_message'] = $isUploadFile[0];
+                        }
+                    }
                 }
             }
             include "../../View/Admin/User/Create.php";
@@ -332,40 +344,50 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $gioi_tinh = $_POST['gioi_tinh'];
                 $vai_tro = $_POST['vai_tro'];
 
-                $hinh = $_FILES['hinh'];
 
-                if ($hinh['name'] == '') {
-                    $User = GetOneUser($tai_khoan_id);
-                    UpdateUser(
-                        $tai_khoan_id,
-                        $ho_va_ten,
-                        $email,
-                        $mat_khau,
-                        $dia_chi,
-                        $so_dien_thoai,
-                        $gioi_tinh,
-                        $User['hinh'],
-                        $vai_tro
-                    );
-                    $_SESSION['success_message'] = "Cập nhật tài khoản thành công";
+                $isExistPhoneNumber = GetUserBySoDienThoai($so_dien_thoai);
+                if ($isExistPhoneNumber) {
+                    $_SESSION['error_message'] = "Số điện thoại đã được sử dụng!";
                 } else {
-                    $UPLOAD_DIR = '../../Upload/User/';
-                    $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
-                    if ($isUploadFile[1]) {
-                        UpdateUser(
-                            $tai_khoan_id,
-                            $ho_va_ten,
-                            $email,
-                            $mat_khau,
-                            $dia_chi,
-                            $so_dien_thoai,
-                            $gioi_tinh,
-                            $isUploadFile[2],
-                            $vai_tro
-                        );
-                        $_SESSION['success_message'] = 'Cập nhật tài khoản thành công!';
+                    $isExistEmail = GetUserByEmail($email);
+                    if ($isExistEmail) {
+                        $_SESSION['error_message'] = "Email đã được sử dụng!";
                     } else {
-                        $_SESSION['error_message'] = $isUploadFile[0];
+                        $hinh = $_FILES['hinh'];
+                        if ($hinh['name'] == '') {
+                            $User = GetOneUser($tai_khoan_id);
+                            UpdateUser(
+                                $tai_khoan_id,
+                                $ho_va_ten,
+                                $email,
+                                $mat_khau,
+                                $dia_chi,
+                                $so_dien_thoai,
+                                $gioi_tinh,
+                                $User['hinh'],
+                                $vai_tro
+                            );
+                            $_SESSION['success_message'] = "Cập nhật tài khoản thành công";
+                        } else {
+                            $UPLOAD_DIR = '../../Upload/User/';
+                            $isUploadFile = UploadImage($hinh, $UPLOAD_DIR);
+                            if ($isUploadFile[1]) {
+                                UpdateUser(
+                                    $tai_khoan_id,
+                                    $ho_va_ten,
+                                    $email,
+                                    $mat_khau,
+                                    $dia_chi,
+                                    $so_dien_thoai,
+                                    $gioi_tinh,
+                                    $isUploadFile[2],
+                                    $vai_tro
+                                );
+                                $_SESSION['success_message'] = 'Cập nhật tài khoản thành công!';
+                            } else {
+                                $_SESSION['error_message'] = $isUploadFile[0];
+                            }
+                        }
                     }
                 }
             }

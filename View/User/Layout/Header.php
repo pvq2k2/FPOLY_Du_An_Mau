@@ -82,10 +82,25 @@ include_once "Global.php";
             </div>
             <div class="box-icon flex items-center gap-x-10">
                 <div id="toggleModalUser" class="user relative group">
-                    <ion-icon name="person-outline" class="text-3xl cursor-pointer group-hover:text-[#74bcec] transition-all duration-300 ease-linear"></ion-icon>
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                        extract($_SESSION['user']);
+                        $hinhPath = "Upload/User/" . $hinh;
+                        if (!is_file($hinhPath)) {
+                            if ($gioi_tinh == 1) {
+                                $hinhPath = "Img/nam.jpg";
+                            } else {
+                                $hinhPath = "Img/nu.jpg";
+                            }
+                        }
+                    ?>
+                        <img src="<?= $hinhPath ?>" class="w-10 h-10 rounded-full shadow-xl border border-current">
+                    <?php } else { ?>
+                        <ion-icon name="person-outline" class="text-3xl cursor-pointer group-hover:text-[#74bcec] transition-all duration-300 ease-linear"></ion-icon>
+                    <?php } ?>
 
                     <div id="boxList" class="absolute top-16 bg-white shadow-xl z-20 p-3 rounded-lg ease-linear duration-300 w-60 xl:left-[-100px] lg:right-[-96px]  group-hover:visible
-                                    before:absolute before:-top-2 xl:before:left-[100px] before:lg:left-[120px]
+                                    before:absolute before:-top-2 xl:before:left-[106px] before:lg:left-[120px]
                                     before:w-5 before:h-5 before:bg-white before:rounded before:rotate-45 before:z-10 
                                     hidden backdrop-saturate-[200%] backdrop-blur-[30px] bg-[hsla(0,0%,100%,0.8)]">
                         <div class="user_box">
