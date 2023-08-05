@@ -143,8 +143,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $san_pham_id = $_POST['san_pham_id'];
                 if (!isset($_SESSION['user'])) {
                     $_SESSION['error_message'] = 'Bạn phải đăng nhập mới có thể đặt hàng!';
-                    echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=login"; </script>';
-                    header("Location: index.php?act=product_detail&product_id=" . $san_pham_id);
+                    echo '<script> window.location.href = "index.php?act=product_detail&product_id=' . $san_pham_id . '"; </script>';
                     die();
                 }
                 $tai_khoan_id = $_SESSION['user']['tai_khoan_id'];
@@ -159,12 +158,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 }
 
                 $_SESSION['success_message'] = 'Sản phẩm đã được thêm vào giỏ hàng thành công!';
-                header("Location: index.php?act=product_detail&product_id=" . $san_pham_id);
+                echo '<script> window.location.href = "index.php?act=product_detail&product_id=' . $san_pham_id . '"; </script>';
             }
             break;
 
         case 'cart':
-
             if (isset($_POST['increaseBtn'])) {
                 $san_pham_id = $_POST['san_pham_id'];
                 $tai_khoan_id = $_SESSION['user']['tai_khoan_id'];
@@ -200,6 +198,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         case 'remove_cart':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
                 RemoveProductInCart($_GET['id']);
+                $_SESSION['success_message'] = 'Xóa thành công!';
                 echo 'success';
                 exit();
             } else {
