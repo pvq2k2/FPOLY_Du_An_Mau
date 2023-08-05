@@ -116,16 +116,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_GET['product_id']) && ($_GET['product_id'] > 0)) {
                 $Product = GetOneProduct($_GET['product_id']);
                 extract($Product);
+                $Category = GetOneCategory($danh_muc_id);
                 UpdateViewProduct($_GET['product_id']);
                 $ListSimilarProduct = SimilarProduct($_GET['product_id'], $danh_muc_id);
 
                 if (isset($_POST['btn_add_comment']) && ($_POST['btn_add_comment'])) {
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-                    $noi_dung = $_POST['noi_dung'];
-                    $tai_khoan_id = $_POST['tai_khoan_id'];
-                    $san_pham_id = $_POST['san_pham_id'];
-                    $ngay_binh_luan = date("Y-m-d H:i:s");
-                    CreateComment($noi_dung, $tai_khoan_id, $san_pham_id, $ngay_binh_luan);
+                    if (isset($_SESSION['user']) && is_array($_SESSION['user'])) {
+                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                        $noi_dung = $_POST['noi_dung'];
+                        $tai_khoan_id = $_POST['tai_khoan_id'];
+                        $san_pham_id = $_POST['san_pham_id'];
+                        $ngay_binh_luan = date("Y-m-d H:i:s");
+                        CreateComment($noi_dung, $tai_khoan_id, $san_pham_id, $ngay_binh_luan);
+                    } else {
+                        $_SESSION['error_message'] = "Vui lòng đăng nhập!";
+                    }
                 }
                 include "View/User/Product/ProductDetail.php";
             } else {
@@ -138,6 +143,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $san_pham_id = $_POST['san_pham_id'];
                 if (!isset($_SESSION['user'])) {
                     $_SESSION['error_message'] = 'Bạn phải đăng nhập mới có thể đặt hàng!';
+                    echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=login"; </script>';
                     header("Location: index.php?act=product_detail&product_id=" . $san_pham_id);
                     die();
                 }

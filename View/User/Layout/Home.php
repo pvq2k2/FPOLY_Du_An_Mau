@@ -45,7 +45,7 @@
             extract($Product);
             $hinhPath = $IMG_PATH . "Product/" . $hinh;
         ?>
-            <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl">
+            <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl shadow-xl">
                 <div class="aspect-h-1 aspect-w-1 w-full h-60 overflow-hidden rounded-lg group-hover:bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 transition-all duration-200 ease-linear">
                     <img src="https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2023/07/18/iphone11.png" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
                 </div>
@@ -68,7 +68,7 @@
             extract($Product);
             $hinhPath = $IMG_PATH . "Product/" . $hinh;
         ?>
-            <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl">
+            <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl shadow-xl">
                 <div class="aspect-h-1 aspect-w-1 w-full h-60 overflow-hidden rounded-lg group-hover:bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 transition-all duration-200 ease-linear">
                     <img src="https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2023/07/18/iphone11.png" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
                 </div>
