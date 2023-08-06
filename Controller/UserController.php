@@ -225,7 +225,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $ngay_dat = date("Y-m-d H:i:s");
                 $tong_tien = $_POST['tong_tien'];
                 $phuong_thuc_thanh_toan = $_POST['phuong_thuc_thanh_toan'];
-                $trang_thai = 0;
+                $trang_thai = 1;
                 $don_hang_id = CreateOrder(
                     $tai_khoan_id,
                     $ho_va_ten,

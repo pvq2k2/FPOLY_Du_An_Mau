@@ -175,7 +175,7 @@ if (is_array($Product)) {
 
         const ImgPreviewElement = $('#img-preview');
         const InputFileElement = $('#hinh');
-        const ExistingHinhValue = <?= json_encode($hinh) ?>;
+        const ExistingHinhValue = <?= json_encode($Product['hinh']) ?>;
         ImgPreviewElement.attr('src', ExistingHinhValue ? `../../Upload/Product/${ExistingHinhValue}` : '../../Img/no_image.jpg');
 
         InputFileElement.change(function() {
