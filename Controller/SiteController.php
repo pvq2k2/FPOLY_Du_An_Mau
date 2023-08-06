@@ -32,7 +32,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $_SESSION['error_message'] = "Email không tồn tại!";
                 }
             }
-            include "View/User/Account/ForgotPassword.php";
+            include "View/Site/Account/ForgotPassword.php";
             break;
         case 'update_information':
             if (isset($_POST['btn_update_information']) && ($_POST['btn_update_information'])) {
@@ -65,7 +65,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $_SESSION['error_message'] = "Tài khoản hoặc mật khẩu không chính xác!";
                 }
             }
-            include "View/User/Account/Login.php";
+            include "View/Site/Account/Login.php";
             break;
         case 'register':
             if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
@@ -91,15 +91,15 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     }
                 }
             }
-            include "View/User/Account/Register.php";
+            include "View/Site/Account/Register.php";
             break;
         case 'search':
             if (isset($_POST['keyWord']) && ($_POST['keyWord'] != "")) {
                 $KeyWord = $_POST['keyWord'];
                 $ListProduct = GetAllProduct($KeyWord, 0);
-                include "View/User/Product/Search.php";
+                include "View/Site/Product/Search.php";
             } else {
-                include "View/User/404.php";
+                include "View/Site/404.php";
             }
             break;
         case 'product':
@@ -107,9 +107,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $danh_muc_id = $_GET['category_id'];
                 $ListProduct = GetAllProduct("", $danh_muc_id);
                 $NameCategory = GetOneCategory($danh_muc_id)['ten_danh_muc'];
-                include "View/User/Product/Product.php";
+                include "View/Site/Product/Product.php";
             } else {
-                include "View/User/404.php";
+                include "View/Site/404.php";
             }
             break;
         case 'product_detail':
@@ -132,9 +132,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         $_SESSION['error_message'] = "Vui lòng đăng nhập!";
                     }
                 }
-                include "View/User/Product/ProductDetail.php";
+                include "View/Site/Product/ProductDetail.php";
             } else {
-                include "View/User/404.php";
+                include "View/Site/404.php";
             }
             break;
 
@@ -192,7 +192,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_SESSION['user'])) {
                 $ListProductInCart = GetAllProductsWhereCartExist($_SESSION['user']['tai_khoan_id']);
             }
-            include "View/User/Cart/Cart.php";
+            include "View/Site/Cart/Cart.php";
             break;
 
         case 'remove_cart':
@@ -211,7 +211,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_SESSION['user'])) {
                 $ListProductInCart = GetAllProductsWhereCartExist($_SESSION['user']['tai_khoan_id']);
             }
-            include "View/User/Cart/Bill.php";
+            include "View/Site/Cart/Bill.php";
             break;
 
         case 'check_out':
@@ -250,14 +250,14 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             $Order = GetOneOrder($don_hang_id);
             $ListOrderDetail = GetAllProductsWhereOrderExist($don_hang_id);
-            include "View/User/Cart/CheckOut.php";
+            include "View/Site/Cart/CheckOut.php";
             break;
 
         case 'my_order':
             if (isset($_SESSION['user'])) {
                 $ListOrder = GetAllOrderByUserID($_SESSION['user']['tai_khoan_id']);
             }
-            include "View/User/Account/MyOrder.php";
+            include "View/Site/Account/MyOrder.php";
             break;
         case 'order_detail':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -268,21 +268,21 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             break;
 
         case 'introduce':
-            include "View/User/Introduce.php";
+            include "View/Site/Introduce.php";
             break;
         case 'contact':
-            include "View/User/Contact.php";
+            include "View/Site/Contact.php";
             break;
         case 'feedback':
-            include "View/User/Feedback.php";
+            include "View/Site/Feedback.php";
             break;
         case 'qa':
-            include "View/User/Q&A.php";
+            include "View/Site/Q&A.php";
             break;
         default:
-            include "View/User/404.php";
+            include "View/Site/404.php";
             break;
     }
 } else {
-    include "View/User/Layout/Home.php";
+    include "View/Site/Layout/Home.php";
 }

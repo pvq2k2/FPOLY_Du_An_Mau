@@ -1,4 +1,4 @@
 <?php
 include "Layout/Header.php";
-include "Controller/UserController.php";
+include "Controller/SiteController.php";
 include "Layout/Footer.php";

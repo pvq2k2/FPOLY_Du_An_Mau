@@ -95,7 +95,7 @@ if (is_array($Product)) {
                 </div>
             </form>
 
-            <iframe src="view/user/product/CommentProduct.php?san_pham_id=<?= $san_pham_id ?>" frameborder="0" class="w-full h-[200px] mt-2"></iframe>
+            <iframe src="View/Site/Product/CommentProduct.php?san_pham_id=<?= $san_pham_id ?>" frameborder="0" class="w-full h-[200px] mt-2"></iframe>
         </div>
     </div>
 
