@@ -347,11 +347,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
 
                 $isExistPhoneNumber = GetUserBySoDienThoai($so_dien_thoai);
-                if ($isExistPhoneNumber) {
+                if ($isExistPhoneNumber && $isExistPhoneNumber['tai_khoan_id'] != $tai_khoan_id) {
                     $_SESSION['error_message'] = "Số điện thoại đã được sử dụng!";
                 } else {
                     $isExistEmail = GetUserByEmail($email);
-                    if ($isExistEmail) {
+                    if ($isExistEmail && $isExistEmail['tai_khoan_id'] != $tai_khoan_id) {
                         $_SESSION['error_message'] = "Email đã được sử dụng!";
                     } else {
                         $hinh = $_FILES['hinh'];

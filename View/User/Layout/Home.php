@@ -1,5 +1,5 @@
 <script>
-    document.title = "VQMA - Bảng điều khiển";
+    document.title = "Văn Quyết Mobile - Bảng điều khiển";
 </script>
 
 <section class="box_main my-5 ml-2">

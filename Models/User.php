@@ -40,9 +40,23 @@ function ForgotPassword($email)
     return pdo_query_one($sql);
 }
 
-function UserUpdate($tai_khoan_id, $ho_va_ten, $email, $so_dien_thoai, $dia_chi)
-{
-    $sql = "UPDATE tai_khoan SET ho_va_ten = '$ho_va_ten', email = '$email', so_dien_thoai = '$so_dien_thoai', dia_chi = '$dia_chi' WHERE tai_khoan_id=" . $tai_khoan_id;
+function UserUpdate(
+    $tai_khoan_id,
+    $ho_va_ten,
+    $email,
+    $dia_chi,
+    $so_dien_thoai,
+    $gioi_tinh,
+    $hinh
+) {
+    $sql = "UPDATE tai_khoan SET 
+    ho_va_ten = '$ho_va_ten', 
+    email = '$email', 
+    so_dien_thoai = '$so_dien_thoai', 
+    dia_chi = '$dia_chi', 
+    gioi_tinh = '$gioi_tinh', 
+    hinh = '$hinh'
+    WHERE tai_khoan_id=" . $tai_khoan_id;
     pdo_execute($sql);
 }
 
@@ -82,14 +96,20 @@ function GetOneUser($tai_khoan_id)
 
 function GetUserBySoDienThoai($so_dien_thoai)
 {
-    $sql = "SELECT so_dien_thoai FROM tai_khoan WHERE so_dien_thoai=" . $so_dien_thoai;
+    $sql = "SELECT tai_khoan_id, so_dien_thoai FROM tai_khoan WHERE so_dien_thoai=" . $so_dien_thoai;
     return pdo_query_one($sql);
 }
 
 function GetUserByEmail($email)
 {
-    $sql = "SELECT email FROM tai_khoan WHERE email='$email'";
+    $sql = "SELECT tai_khoan_id, email FROM tai_khoan WHERE email='$email'";
     return pdo_query_one($sql);
+}
+
+function ChangePassword($tai_khoan_id, $mat_khau)
+{
+    $sql = "UPDATE tai_khoan SET mat_khau = '$mat_khau' WHERE tai_khoan_id=" . $tai_khoan_id;
+    pdo_execute($sql);
 }
 
 function UpdateUser(
