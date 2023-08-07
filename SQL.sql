@@ -19,12 +19,9 @@ CREATE TABLE san_pham (
   san_pham_id INT(11) AUTO_INCREMENT PRIMARY KEY,
   ten_san_pham VARCHAR(50) NOT NULL,
   gia INT NOT NULL,
-  giam_gia INT(100) DEFAULT 0,
   hinh VARCHAR(255) NOT NULL,
   so_luong INT NOT NULL,
-  ngay_nhap DATE NOT NULL,
   mo_ta TEXT,
-  dac_biet TINYINT(1) NOT NULL,
   so_luot_xem INT(11) DEFAULT 0,
   danh_muc_id INT(10) NOT NULL,
   FOREIGN KEY (danh_muc_id) REFERENCES danh_muc(danh_muc_id)

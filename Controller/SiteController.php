@@ -22,6 +22,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             session_unset();
             echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=login"; </script>';
             break;
+
         case 'forgot_password':
             if (isset($_POST['btn_forgot_password']) && ($_POST['btn_forgot_password'])) {
                 $email = $_POST['email'];
@@ -34,24 +35,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "View/Site/Account/ForgotPassword.php";
             break;
-        case 'update_information':
-            if (isset($_POST['btn_update_information']) && ($_POST['btn_update_information'])) {
-                $TaiKhoanId = $_POST['tai_khoan_id'];
-                $HoVaTen = $_POST['ho_va_ten'];
-                $Email = $_POST['email'];
-                $SoDienThoai = $_POST['so_dien_thoai'];
-                $DiaChi = $_POST['dia_chi'];
 
-                if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) {
-                    UserUpdate($TaiKhoanId, $HoVaTen, $Email, $SoDienThoai, $DiaChi);
-                    extract($_SESSION['user']);
-                    $_SESSION['user'] = Login($Email, $mat_khau);
-                    $msg = "Cập nhật thành công";
-                    header('Location: index.php?act=update_information');
-                }
-            }
-            include "View/User/Account/UserUpdate.php";
-            break;
         case 'login':
             if (isset($_POST['btn_login']) && ($_POST['btn_login'])) {
                 $email = $_POST['email'];
@@ -67,6 +51,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "View/Site/Account/Login.php";
             break;
+
         case 'register':
             if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
                 $ho_va_ten = $_POST['ho_va_ten'];
@@ -93,6 +78,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             }
             include "View/Site/Account/Register.php";
             break;
+
         case 'search':
             if (isset($_POST['keyWord']) && ($_POST['keyWord'] != "")) {
                 $KeyWord = $_POST['keyWord'];
@@ -102,6 +88,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "View/Site/404.php";
             }
             break;
+
         case 'product':
             if (isset($_GET['category_id']) && ($_GET['category_id'] > 0)) {
                 $danh_muc_id = $_GET['category_id'];
@@ -112,6 +99,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 include "View/Site/404.php";
             }
             break;
+
         case 'product_detail':
             if (isset($_GET['product_id']) && ($_GET['product_id'] > 0)) {
                 $Product = GetOneProduct($_GET['product_id']);
@@ -253,32 +241,22 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "View/Site/Cart/CheckOut.php";
             break;
 
-        case 'my_order':
-            if (isset($_SESSION['user'])) {
-                $ListOrder = GetAllOrderByUserID($_SESSION['user']['tai_khoan_id']);
-            }
-            include "View/Site/Account/MyOrder.php";
-            break;
-        case 'order_detail':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $Order = GetOneOrder($_GET['id']);
-                $ListOrderDetail = GetAllProductsWhereOrderExist($_GET['id']);
-            }
-            include "View/User/Cart/OrderDetail.php";
-            break;
-
         case 'introduce':
             include "View/Site/Introduce.php";
             break;
+
         case 'contact':
             include "View/Site/Contact.php";
             break;
+
         case 'feedback':
             include "View/Site/Feedback.php";
             break;
+
         case 'qa':
             include "View/Site/Q&A.php";
             break;
+
         default:
             include "View/Site/404.php";
             break;

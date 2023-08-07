@@ -1,3 +1,7 @@
+<script>
+    document.title = "Văn Quyết Mobile - 404 không tìm thấy trang";
+</script>
+
 <div class="flex h-[calc(100vh-80px)] items-center justify-center p-5 bg-white w-full rounded-xl shadow-xl">
     <div class="text-center">
         <div class="inline-flex rounded-full bg-yellow-100 p-4">

@@ -119,11 +119,10 @@ include_once "Global.php";
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <a href="<?php echo $vai_tro == 1 ? "View/Admin/index.php?act=dashboard" : "View/User/index.php?act=dashboard" ?>" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Trang quản trị</a>
                                         <a href="index.php?act=my_order" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Đơn hàng của tôi</a>
-                                        <?php if ($vai_tro == 1) { ?>
-                                            <a href="view/admin/index.php?act=dashboard" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Trang quản trị</a>
-                                        <?php } ?>
-                                        <a href="index.php?act=update_information" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Cập nhật thông tin</a>
                                         <a href="index.php?act=logout" class="rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">Đăng xuất</a>
                                     <?php } else { ?>
                                         <a href="index.php?act=login" class="mt-1 rounded-lg hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] hover:shadow-xl transition duration-150 ease-out hover:ease-in inline-block w-full p-3 text-black font-semibold cursor-pointer hover:text-white">

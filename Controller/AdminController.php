@@ -14,7 +14,8 @@ include "../../Global.php";
 
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['vai_tro'] == 0) {
-    header('Location: ' . $ROOT_URL . 'index.php');
+    // header('Location: ' . $ROOT_URL . 'index.php');
+    echo '<script> window.location.href = "' . $ROOT_URL . 'index.php"; </script>';
     exit();
 }
 if (isset($_GET['act']) && ($_GET['act'] != "")) {
@@ -539,9 +540,9 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "../../View/Admin/Layout/Home.php";
             break;
         default:
-            include "../../View/User/404.php";
+            include "../../View/Site/404.php";
             break;
     }
 } else {
-    header('Location: ' . $ROOT_URL . 'index.php?act=dashboard');
+    echo '<script> window.location.href = "' . $ROOT_URL . 'View/Admin/index.php?act=dashboard"; </script>';
 }

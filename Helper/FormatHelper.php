@@ -1,8 +1,4 @@
 <?php
-function FormatPrice($price)
-{
-    return number_format($price, 0, ',', '.') . "đ";
-}
 function FormatNumber($number)
 {
     return number_format($number, 0, ',', '.');
@@ -32,6 +28,18 @@ function FormatOrderStatus($trang_thai)
             break;
         case 4:
             return "Thành công";
+            break;
+    }
+}
+
+function FormatGender($gioi_tinh)
+{
+    switch ($gioi_tinh) {
+        case 1:
+            return "Nam";
+            break;
+        case 2:
+            return "Nữ";
             break;
     }
 }

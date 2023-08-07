@@ -1,3 +1,7 @@
+<script>
+    document.title = "Văn Quyết Mobile - Thanh toán";
+</script>
+
 <section class="my-8 ml-2 md:flex md:items-center md:justify-between">
     <div class="breadcumrb">
         <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">

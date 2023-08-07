@@ -1,3 +1,6 @@
+<script>
+    document.title = "Văn Quyết Mobile - Cảm ơn";
+</script>
 <?php
 if (isset($Order) && (is_array($Order))) {
     extract($Order);
