@@ -16,7 +16,7 @@
 </section>
 
 <section class="flex gap-x-5">
-    <div class="flex flex-col shadow-xl rounded-lg w-7/12">
+    <div class="flex flex-col shadow-xl h-fit rounded-lg w-7/12">
         <div class="-my-2 overflow-x-auto">
             <div class="inline-block min-w-full py-2 align-middle">
                 <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -33,7 +33,10 @@
                                     Số lượng
                                 </th>
                                 <th class="px-4 py-3.5 text-sm font-normal rtl:text-right text-gray-500 dark:text-gray-400">
-                                    Tổng tiền sản phẩm
+                                    Giá
+                                </th>
+                                <th class="px-4 py-3.5 text-sm font-normal rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Tổng tiền
                                 </th>
                             </tr>
                         </thead>
@@ -56,6 +59,9 @@
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap text-center">
                                         <span><?= FormatNumber($gia) ?>đ</span>
                                     </td>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap text-center">
+                                        <span><?= FormatNumber($gia * $so_luong) ?>đ</span>
+                                    </td>
                                 </tr>
                             <?php } ?>
 
@@ -67,8 +73,7 @@
         </div>
     </div>
 
-    <div class="infoOrder flex flex-col gap-y-3 bg-white rounded-xl shadow-xl ml-5 p-5">
-
+    <div class="infoOrder h-fit flex flex-col gap-y-3 bg-white rounded-xl shadow-xl ml-5 p-5">
         <div class="title text-2xl font-semibold">Thông tin đơn hàng</div>
         <div>Đơn hàng ID: <span class="font-semibold"><?= $Order['don_hang_id'] ?></span></div>
         <div>Ngày đặt: <span class="font-semibold"><?= $Order['ngay_dat'] ?></span></div>

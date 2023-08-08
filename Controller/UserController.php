@@ -106,8 +106,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $Order = GetOneOrder($_GET['id']);
                 $ListOrderDetail = GetAllProductsWhereOrderExist($_GET['id']);
             }
-            include "../../View/User/Cart/OrderDetail.php";
-
+            include "../../View/User/OrderDetail.php";
+            break;
         default:
             include "../../View/Site/404.php";
             break;
