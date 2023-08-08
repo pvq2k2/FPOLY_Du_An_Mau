@@ -28,7 +28,7 @@ if (is_array($ListProduct) && count($ListProduct) > 0) {
         ?>
             <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl shadow-xl">
                 <div class="aspect-h-1 aspect-w-1 w-full h-60 overflow-hidden rounded-lg group-hover:bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 transition-all duration-200 ease-linear">
-                    <img src="https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2023/07/18/iphone11.png" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
+                    <img src="<?= $hinhPath ?>" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
                 </div>
                 <h3 class="mt-4 text-sm text-gray-700"><?= $ten_san_pham ?></h3>
                 <p class="mt-1 text-lg font-medium text-gray-900"><?= FormatNumber($gia) ?>₫</p>

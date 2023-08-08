@@ -138,8 +138,27 @@ include_once "Global.php";
                     </div>
 
                 </div>
-                <a href="index.php?act=cart" class="group">
+                <a href="index.php?act=cart" class="group flex items-center">
                     <ion-icon name="cart-outline" class="text-3xl group-hover:text-[#74bcec] transition-all duration-300 ease-linear"></ion-icon>
+                    <label class="flex justify-end justify-items-end items-center">
+                        <ion-icon name="caret-back-outline" class="relative text-xl left-[7px] text-blue-500"></ion-icon>
+                        <?php
+                        if (isset($_SESSION['quantity_cart']) && is_array($_SESSION['quantity_cart'])) {
+                        ?>
+                            <span id="cart-total" class="text-center bg-blue-500 px-2 text-white rounded-md">
+                                <?php if ($_SESSION['quantity_cart']['tong_so_luong'] == null) {
+                                    echo "0";
+                                } else if ($_SESSION['quantity_cart']['tong_so_luong'] > 10) {
+                                    echo "10+";
+                                } else {
+                                    echo $_SESSION['quantity_cart']['tong_so_luong'];
+                                } ?>
+                            </span>
+                        <?php
+                        }
+                        ?>
+
+                    </label>
                 </a>
             </div>
         </div>

@@ -5,6 +5,15 @@ function AddToCart($tai_khoan_id, $san_pham_id, $so_luong)
     pdo_execute($sql);
 }
 
+function GetQuantityCart($tai_khoan_id)
+{
+    $sql = "SELECT SUM(so_luong) AS tong_so_luong
+    FROM gio_hang
+    WHERE tai_khoan_id =" . $tai_khoan_id;
+    return pdo_query_one($sql);
+}
+
+
 function UpdateQuantityProductExistInCart($gio_hang_id, $so_luong)
 {
     $sql = "UPDATE gio_hang SET so_luong = so_luong + '" . $so_luong . "' WHERE gio_hang_id=" . $gio_hang_id;

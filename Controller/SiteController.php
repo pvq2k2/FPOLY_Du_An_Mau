@@ -43,6 +43,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $isLogin = Login($email, $mat_khau);
                 if (is_array($isLogin)) {
                     $_SESSION['user'] = $isLogin;
+                    $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
                     $_SESSION['success_message'] = "Đăng nhập thành công!";
                     echo '<script> window.location.href = "' . $ROOT_URL . 'index.php"; </script>';
                 } else {
@@ -140,9 +141,11 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $isProductExistInCart = FindProductInCart($tai_khoan_id, $san_pham_id);
                 if (count($isProductExistInCart) == 0) {
                     AddToCart($tai_khoan_id, $san_pham_id, $so_luong);
+                    $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
                 } else {
                     $gio_hang_id = $isProductExistInCart[0]['gio_hang_id'];
                     UpdateQuantityProductExistInCart($gio_hang_id, $so_luong);
+                    $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
                 }
 
                 $_SESSION['success_message'] = 'Sản phẩm đã được thêm vào giỏ hàng thành công!';
@@ -160,6 +163,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $isProductExistInCart = FindProductInCart($tai_khoan_id, $san_pham_id);
                 if (count($isProductExistInCart) > 0) {
                     UpdateQuantityProductInCart($gio_hang_id, $so_luong);
+                    $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
+                    echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=cart"; </script>';
                 }
             } else if (isset($_POST['decreaseBtn'])) {
                 $san_pham_id = $_POST['san_pham_id'];
@@ -174,6 +179,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                     $isProductExistInCart = FindProductInCart($tai_khoan_id, $san_pham_id);
                     if (count($isProductExistInCart) > 0) {
                         UpdateQuantityProductInCart($gio_hang_id, $so_luong);
+                        $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
+                        echo '<script> window.location.href = "' . $ROOT_URL . 'index.php?act=cart"; </script>';
                     }
                 }
             }
@@ -234,6 +241,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                         CreateOrderDetail($don_hang_id, $san_pham_id, $so_luong, $gia, $total_product_amount);
                         RemoveProductInCart($gio_hang_id);
                     }
+                    $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
                 }
             }
             $Order = GetOneOrder($don_hang_id);

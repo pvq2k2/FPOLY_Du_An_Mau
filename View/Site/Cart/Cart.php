@@ -152,7 +152,7 @@ if (isset($_SESSION['error_message'])) {
                     type: 'GET',
                     success: function(response) {
                         if (response.includes("success")) {
-                            location.reload();
+                            // location.reload();
                         } else {
                             // toastr.error('Xóa bình luận thất bại!');
                         }
