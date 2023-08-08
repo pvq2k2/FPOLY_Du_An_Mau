@@ -98,7 +98,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             if (isset($_SESSION['user'])) {
                 $ListOrder = GetAllOrderByUserID($_SESSION['user']['tai_khoan_id']);
             }
-            include "../../View/Site/Account/MyOrder.php";
+            include "../../View/User/MyOrder.php";
             break;
 
         case 'order_detail':

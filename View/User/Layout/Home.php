@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="icon absolute bottom-[-2px] right-[100px]">
-        <img src="https://hoanghamobile.com/Content/web/content-icon/icon-account-home.png">
+        <img src="../../Img/icon-account-home.png">
     </div>
 </div>
 

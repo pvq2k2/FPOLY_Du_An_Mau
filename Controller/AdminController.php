@@ -511,23 +511,23 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
             include "../../View/Admin/Order/List.php";
             break;
 
-        case 'remove_order':
-            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-                $ListOrderDetail = GetAllProductByOrderID($_GET['id']);
-                if (is_array($ListOrderDetail) && count($ListOrderDetail) > 0) {
-                    foreach ($ListOrderDetail as $OrderDetail) {
-                        RemoveOrderDetail($OrderDetail['chi_tiet_don_hang_id']);
-                    }
-                }
-                RemoveOrder($_GET['id'], $ListOrderDetail);
-                $_SESSION['success_message'] = 'Xóa đơn hàng thành công!';
-                echo 'success';
-                exit();
-            } else {
-                echo 'error';
-                exit();
-            }
-            break;
+            // case 'remove_order':
+            //     if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            //         $ListOrderDetail = GetAllProductByOrderID($_GET['id']);
+            //         if (is_array($ListOrderDetail) && count($ListOrderDetail) > 0) {
+            //             foreach ($ListOrderDetail as $OrderDetail) {
+            //                 RemoveOrderDetail($OrderDetail['chi_tiet_don_hang_id']);
+            //             }
+            //         }
+            //         RemoveOrder($_GET['id']);
+            //         $_SESSION['success_message'] = 'Xóa đơn hàng thành công!';
+            //         echo 'success';
+            //         exit();
+            //     } else {
+            //         echo 'error';
+            //         exit();
+            //     }
+            //     break;
         case 'dashboard':
             $so_luong_nguoi_dung = StatisticsOnTheNumberOfUsers();
             $so_luong_binh_luan = StatisticsOfTheTotalNumberOfComments();

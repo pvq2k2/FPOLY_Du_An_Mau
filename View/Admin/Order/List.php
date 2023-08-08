@@ -140,11 +140,11 @@
                                                     </button>
                                                 </a>
 
-                                                <button onclick="deleteOrder()" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
+                                                <!-- <button onclick="deleteOrder()" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600 dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
                                                     <ion-icon name="trash-outline" class="text-xl"></ion-icon>
 
                                                     <span>Xóa</span>
-                                                </button>
+                                                </button> -->
                                             </div>
                                         </td>
                                     </tr>

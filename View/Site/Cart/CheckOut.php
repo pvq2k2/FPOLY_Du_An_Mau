@@ -62,7 +62,7 @@ if (isset($Order) && (is_array($Order))) {
                                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                             <?php
                                             foreach ($ListOrderDetail as $Product) {
-                                                extract($Cart);
+                                                extract($Product);
                                                 $hinh = $IMG_PATH . "Product/" . $hinh;
                                             ?>
                                                 <tr>
@@ -100,7 +100,7 @@ if (isset($Order) && (is_array($Order))) {
         <span>Trang chủ</span>
     </a>
 
-    <a href="index.php?act=my_order" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 rounded-lg shrink-0 sm:w-auto gap-x-2 bg-gradient-to-r from-[#4ba3e7] to-[#0f4670] hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
+    <a href="<?= $ROOT_URL ?>View/User/index.php?act=my_order" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 rounded-lg shrink-0 sm:w-auto gap-x-2 bg-gradient-to-r from-[#4ba3e7] to-[#0f4670] hover:bg-gradient-to-r hover:from-[#0f4670] hover:to-[#4ba3e7] dark:hover:bg-blue-500 dark:bg-blue-600 shadow-xl">
         <span>Đơn hàng của tôi</span>
     </a>
 </div>

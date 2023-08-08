@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="icon absolute bottom-[-2px] right-[100px]">
-        <img src="https://hoanghamobile.com/Content/web/content-icon/icon-account-info.png">
+        <img src="../../Img/icon-account-info.png">
     </div>
 </div>
 <?php if (isset($_SESSION['user']) && (is_array($_SESSION['user']))) extract($_SESSION['user']); ?>
