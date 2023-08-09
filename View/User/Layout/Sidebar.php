@@ -109,8 +109,8 @@ $isActiveMyOrder = $act == "my_order" || $act == "order_detail";
                     </li>
 
                     <li class="mt-0.5 w-full group">
-                        <a class="<?php echo ($isActiveCategory ? "text-slate-700 " : "text-slate-400 "); ?>group-hover:text-black font-semibold py-2 text-base mt-3 mx-3 flex items-center gap-x-2 whitespace-nowrap px-4" href="index.php?act=dashboard">
-                            <div class="<?php echo ($isActiveCategory ? "bg-gradient-to-tl from-[#4ba3e7] to-[#0f4670] text-white " : "text-black "); ?>group-hover:bg-gradient-to-tl group-hover:from-[#4ba3e7] group-hover:to-[#0f4670] group-hover:text-white shadow-xl flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center bg-gray-100">
+                        <a class="text-slate-400 group-hover:text-black font-semibold py-2 text-base mt-3 mx-3 flex items-center gap-x-2 whitespace-nowrap px-4" href="<?= $ROOT_URL ?>index.php?act=logout">
+                            <div class="text-black group-hover:bg-gradient-to-tl group-hover:from-[#4ba3e7] group-hover:to-[#0f4670] group-hover:text-white shadow-xl flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center bg-gray-100">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </div>
                             <span class="ml-1 opacity-100 pointer-events-none">Đăng xuất</span>
