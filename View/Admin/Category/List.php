@@ -90,7 +90,7 @@
                                 <?php }
                             } else { ?>
                                 <tr>
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <div class="flex flex-col justify-center items-center py-20">
                                             <ion-icon name="server-outline" class="text-5xl"></ion-icon>
                                             <h2 class="text-xl">Không có dữ liệu</h2>

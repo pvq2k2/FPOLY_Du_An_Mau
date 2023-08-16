@@ -2,7 +2,7 @@
     document.title = "Văn Quyết Mobile - Tìm kiếm <?= $KeyWord ?>";
 </script>
 
-<h1 class="text-2xl font-semibold text-center my-10"> Kết quả tìm kiếm "<?= $KeyWord ?>" </h1>
+<h1 class="text-2xl font-semibold text-center my-10"> Kết quả tìm kiếm <span class="font-bold">"<?= $KeyWord ?>"</span> </h1>
 
 <?php
 if (is_array($ListProduct) && count($ListProduct) > 0) {

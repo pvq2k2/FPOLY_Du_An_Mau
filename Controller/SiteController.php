@@ -195,6 +195,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 RemoveProductInCart($_GET['id']);
                 $_SESSION['success_message'] = 'Xóa thành công!';
                 echo 'success';
+                $_SESSION['quantity_cart'] = GetQuantityCart($_SESSION['user']['tai_khoan_id']);
                 exit();
             } else {
                 echo 'error';

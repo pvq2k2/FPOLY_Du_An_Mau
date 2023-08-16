@@ -1,7 +1,8 @@
 <?php
 function CreateProduct($ten_san_pham, $gia, $hinh, $ngay_nhap, $mo_ta, $danh_muc_id)
 {
-    $sql = "INSERT INTO san_pham(ten_san_pham, gia, hinh, ngay_nhap, mo_ta, danh_muc_id) VALUES('$ten_san_pham', '$gia', '$hinh', '$ngay_nhap', '$mo_ta', '$danh_muc_id')";
+    $sql = "INSERT INTO san_pham(ten_san_pham, gia, hinh, ngay_nhap, mo_ta, danh_muc_id) 
+    VALUES('$ten_san_pham', '$gia', '$hinh', '$ngay_nhap', '$mo_ta', '$danh_muc_id')";
     pdo_execute($sql);
 }
 
@@ -48,12 +49,32 @@ function GetOneProduct($san_pham_id)
     return pdo_query_one($sql);
 }
 
-function UpdateProduct($san_pham_id, $ten_san_pham, $gia, $hinh, $ngay_nhap, $mo_ta, $danh_muc_id)
-{
+function UpdateProduct(
+    $san_pham_id,
+    $ten_san_pham,
+    $gia,
+    $hinh,
+    $ngay_nhap,
+    $mo_ta,
+    $danh_muc_id
+) {
     if ($hinh == '')
-        $sql = "UPDATE san_pham SET ten_san_pham = '$ten_san_pham', gia = '$gia', ngay_nhap = '$ngay_nhap', mo_ta = '$mo_ta', danh_muc_id = '$danh_muc_id'  WHERE san_pham_id=" . $san_pham_id;
+        $sql = "UPDATE san_pham SET 
+        ten_san_pham = '$ten_san_pham', 
+        gia = '$gia', 
+        ngay_nhap = '$ngay_nhap', 
+        mo_ta = '$mo_ta', 
+        danh_muc_id = '$danh_muc_id'  
+        WHERE san_pham_id=" . $san_pham_id;
     else
-        $sql = "UPDATE san_pham SET ten_san_pham = '$ten_san_pham', gia = '$gia', hinh = '$hinh', ngay_nhap = '$ngay_nhap', mo_ta = '$mo_ta', danh_muc_id = '$danh_muc_id'  WHERE san_pham_id=" . $san_pham_id;
+        $sql = "UPDATE san_pham SET 
+        ten_san_pham = '$ten_san_pham', 
+        gia = '$gia', 
+        hinh = '$hinh', 
+        ngay_nhap = '$ngay_nhap', 
+        mo_ta = '$mo_ta', 
+        danh_muc_id = '$danh_muc_id'  
+        WHERE san_pham_id=" . $san_pham_id;
     pdo_execute($sql);
 }
 

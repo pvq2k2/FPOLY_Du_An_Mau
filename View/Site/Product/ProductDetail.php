@@ -98,29 +98,32 @@ if (is_array($Product)) {
             <iframe src="View/Site/Product/CommentProduct.php?san_pham_id=<?= $san_pham_id ?>" frameborder="0" class="w-full h-[200px] mt-2"></iframe>
         </div>
     </div>
+    <?php
+    if (is_array($ListSimilarProduct) && count($ListSimilarProduct) > 0) { ?>
+        <div class="my-5">
+            <div class="title mt-5 inline-block h-8 overflow-hidden bg-[#4ba3e7] rounded after:content-[''] after:ml-10 after:border-t-[40px] after:border-t-[#0f4670] after:border-l-[40px] after:border-[#4ba3e7]">
+                <h4 class="text-white text-center pr-16 pl-9 ml-16 bg-[#0f4670] text-white uppercase">Sản phẩm cùng loại</h4>
+            </div>
 
-    <div class="my-5">
-        <div class="title mt-5 inline-block h-8 overflow-hidden bg-[#4ba3e7] rounded after:content-[''] after:ml-10 after:border-t-[40px] after:border-t-[#0f4670] after:border-l-[40px] after:border-[#4ba3e7]">
-            <h4 class="text-white text-center pr-16 pl-9 ml-16 bg-[#0f4670] text-white uppercase">Sản phẩm cùng loại</h4>
+            <div class="grid grid-cols-5 gap-x-5 gap-y-10 mt-5">
+                <?php
+                foreach ($ListSimilarProduct as $SimilarProduct) {
+                    extract($SimilarProduct);
+                    $hinhPath = $IMG_PATH . "Product/" . $hinh;
+                ?>
+                    <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl shadow-xl">
+                        <div class="aspect-h-1 aspect-w-1 w-full h-60 overflow-hidden rounded-lg group-hover:bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 transition-all duration-200 ease-linear">
+                            <img src="<?= $hinhPath ?>" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
+                        </div>
+                        <h3 class="mt-4 text-sm text-gray-700"><?= $ten_san_pham ?></h3>
+                        <p class="mt-1 text-lg font-medium text-gray-900"><?= FormatNumber($gia) ?>₫</p>
+                    </a>
+                <?php } ?>
+            </div>
         </div>
-
-        <div class="grid grid-cols-5 gap-x-5 gap-y-10 mt-5">
-            <?php
-            foreach ($ListSimilarProduct as $SimilarProduct) {
-                extract($SimilarProduct);
-                $hinhPath = $IMG_PATH . "Product/" . $hinh;
-            ?>
-                <a href="index.php?act=product_detail&product_id=<?= $san_pham_id ?>" class="group bg-white p-5 rounded-xl shadow-xl">
-                    <div class="aspect-h-1 aspect-w-1 w-full h-60 overflow-hidden rounded-lg group-hover:bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 transition-all duration-200 ease-linear">
-                        <img src="https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2023/07/18/iphone11.png" class="h-full w-full object-cover object-center group-hover:opacity-75 transition-all duration-200 ease-linear">
-                    </div>
-                    <h3 class="mt-4 text-sm text-gray-700"><?= $ten_san_pham ?></h3>
-                    <p class="mt-1 text-lg font-medium text-gray-900"><?= FormatNumber($gia) ?>₫</p>
-                </a>
-            <?php } ?>
-        </div>
-    </div>
-
+    <?php
+    }
+    ?>
 
 
 

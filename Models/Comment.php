@@ -31,15 +31,21 @@ function GetOneComment($binh_luan_id)
     $sql = "SELECT * FROM binh_luan WHERE binh_luan_id=" . $binh_luan_id;
     return pdo_query_one($sql);
 }
-function CreateComment($noi_dung, $tai_khoan_id, $san_pham_id, $ngay_binh_luan)
-{
-    $sql = "INSERT INTO binh_luan(noi_dung, tai_khoan_id, san_pham_id, ngay_binh_luan) VALUES('$noi_dung', '$tai_khoan_id', '$san_pham_id', '$ngay_binh_luan')";
+function CreateComment(
+    $noi_dung,
+    $tai_khoan_id,
+    $san_pham_id,
+    $ngay_binh_luan
+) {
+    $sql = "INSERT INTO binh_luan(noi_dung, tai_khoan_id, san_pham_id, ngay_binh_luan) 
+    VALUES('$noi_dung', '$tai_khoan_id', '$san_pham_id', '$ngay_binh_luan')";
     pdo_execute($sql);
 }
 
 function UpdateComment($binh_luan_id, $noi_dung)
 {
-    $sql = "UPDATE binh_luan SET noi_dung = '$noi_dung' WHERE binh_luan_id=" . $binh_luan_id;
+    $sql = "UPDATE binh_luan SET noi_dung = '$noi_dung' 
+    WHERE binh_luan_id=" . $binh_luan_id;
     pdo_execute($sql);
 }
 

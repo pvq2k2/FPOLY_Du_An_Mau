@@ -58,9 +58,19 @@ function GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc)
     return pdo_query($sql);
 }
 
-function UpdateOrder($don_hang_id, $ho_va_ten, $email, $dia_chi, $so_dien_thoai, $trang_thai)
-{
-    $sql = "UPDATE don_hang SET ho_va_ten = '$ho_va_ten', email = '$email', dia_chi = '$dia_chi', so_dien_thoai = '$so_dien_thoai', trang_thai = '$trang_thai' WHERE don_hang_id = '$don_hang_id'";
+function UpdateOrder(
+    $don_hang_id,
+    $ho_va_ten,
+    $email,
+    $dia_chi,
+    $so_dien_thoai,
+    $trang_thai
+) {
+    $sql = "UPDATE don_hang SET 
+    ho_va_ten = '$ho_va_ten', email = '$email', 
+    dia_chi = '$dia_chi', so_dien_thoai = '$so_dien_thoai', 
+    trang_thai = '$trang_thai' 
+    WHERE don_hang_id = '$don_hang_id'";
     pdo_execute($sql);
 }
 

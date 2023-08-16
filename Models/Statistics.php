@@ -109,7 +109,7 @@ function OrderQuantityStatistics()
  */
 function TotalRevenueStatistics()
 {
-    $sql = "SELECT SUM(tong_tien) AS tong_doanh_thu FROM don_hang";
+    $sql = "SELECT SUM(tong_tien) AS tong_doanh_thu FROM don_hang WHERE trang_thai = 4";
     return pdo_query($sql);
 }
 

@@ -69,10 +69,9 @@ if (is_array($Product)) {
                 <option value="" hidden>Chọn danh mục</option>
                 <?php
                 foreach ($ListCategory as $Category) {
-                    extract($Category);
-                    if ($danh_muc_id == $danh_muc_id) $s = 'selected';
+                    if ($Category['danh_muc_id'] == $Product['danh_muc_id']) $s = 'selected';
                     else $s = '';
-                    echo '<option value="' . $danh_muc_id . '" ' . $s . '>' . $ten_danh_muc . '</option>';
+                    echo '<option value="' . $Category['danh_muc_id'] . '" ' . $s . '>' . $Category['ten_danh_muc'] . '</option>';
                 }
                 ?>
             </select>
@@ -141,7 +140,7 @@ if (is_array($Product)) {
                     required: "Vui lòng chọn danh mục !",
                 },
                 mo_ta: {
-                    required: "Vui lòng nhập nội dung !",
+                    required: "Vui lòng nhập mô tả !",
                 },
             },
             errorPlacement: function(error, element) {

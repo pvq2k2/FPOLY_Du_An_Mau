@@ -59,7 +59,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
                 $hinh = $_FILES['hinh'];
 
                 if ($hinh['name'] == '') {
-                    $Category = GetOneProduct($danh_muc_id);
+                    $Category = GetOneCategory($danh_muc_id);
                     UpdateCategory($danh_muc_id, $ten_danh_muc, $Category['hinh']);
                     $_SESSION['success_message'] = 'Cập nhật sản phẩm thành công!';
                 } else {

@@ -112,7 +112,11 @@ if (isset($_SESSION['user'])) {
     <?php
     } else {
     ?>
-        <h1 class="text-xl font-semibold text-center">Hiện chưa có sản phẩm nào trong giỏ hàng</h1>
+        <div class="flex flex-col items-center">
+            <img class="w-4/12" src="Img/add-to-cart.png">
+            <h1 class="text-xl font-semibold text-center">Hiện chưa có sản phẩm nào trong giỏ hàng</h1>
+        </div>
+
     <?php
     }
 } else {
@@ -152,7 +156,7 @@ if (isset($_SESSION['error_message'])) {
                     type: 'GET',
                     success: function(response) {
                         if (response.includes("success")) {
-                            // location.reload();
+                            location.reload();
                         } else {
                             // toastr.error('Xóa bình luận thất bại!');
                         }

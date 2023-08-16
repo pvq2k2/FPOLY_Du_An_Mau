@@ -146,7 +146,7 @@ if (isset($_SESSION['error_message'])) {
                     required: "Vui lòng chọn danh mục !",
                 },
                 mo_ta: {
-                    required: "Vui lòng nhập nội dung !",
+                    required: "Vui lòng nhập mô tả !",
                 },
             },
             errorPlacement: function(error, element) {
