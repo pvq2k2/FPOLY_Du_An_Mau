@@ -31,8 +31,8 @@ if (is_array($Product)) {
 
 <section>
     <div class="flex gap-x-10">
-        <div class="img max-w-[550px] max-h-[500px] rounded-xl overflow-hidden shadow-xl">
-            <img src="<?= $hinhPath ?>" class="mx-auto">
+        <div class="img h-3/6 w-64 rounded-xl overflow-hidden shadow-xl">
+            <img src="<?= $hinhPath ?>" class="mx-auto w-full h-full">
         </div>
         <div class="info w-6/12">
             <form action="index.php?act=add_to_cart" method="post" id="addToCartForm">
