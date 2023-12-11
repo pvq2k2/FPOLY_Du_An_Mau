@@ -13,7 +13,7 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
     switch ($act) {
         case 'dashboard':
             if (isset($_SESSION['user'])) {
-                $ListOrder = GetAllOrderByUserID($_SESSION['user']['tai_khoan_id']);
+                $ListOrder = GetLimitOrderByUserID($_SESSION['user']['tai_khoan_id']);
             }
             include "../../View/User/Layout/Home.php";
             break;

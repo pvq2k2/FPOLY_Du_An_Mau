@@ -42,6 +42,12 @@ function GetAllOrderByUserID($tai_khoan_id)
     return pdo_query($sql);
 }
 
+function GetLimitOrderByUserID($tai_khoan_id)
+{
+    $sql = "SELECT * FROM don_hang WHERE tai_khoan_id='$tai_khoan_id' ORDER BY ngay_dat DESC LIMIT 0,3";
+    return pdo_query($sql);
+}
+
 function GetAllOrder($keyWord, $trang_thai, $ngay_bat_dau, $ngay_ket_thuc)
 {
     $sql = "SELECT * FROM don_hang WHERE 1";
